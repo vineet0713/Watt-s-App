@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "105973012660",
+    "firebase_url": "https://watt-s-app.firebaseio.com",
+    "project_id": "watt-s-app",
+    "storage_bucket": "watt-s-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105973012660:android:cb95112bef377e12",
+        "android_client_info": {
+          "package_name": "com.example.vjoshi.wattsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105973012660-3vg9gspaub11so9j9sjceju05qm9egt7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vjoshi.wattsapp",
+            "certificate_hash": "af101796a5c98c6d35025d209b8b48d29d9031dc"
+          }
+        },
+        {
+          "client_id": "105973012660-rh0c1ke8f14q3ug2c165n75r1kolgv10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKjcVzDdEfyp4Wt9kEWagOQVQZyVxguXc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105973012660-rh0c1ke8f14q3ug2c165n75r1kolgv10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
