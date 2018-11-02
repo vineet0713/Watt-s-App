@@ -8,3 +8,11 @@
 /build
 /captures
 .externalNativeBuild
+
+# added from: https://stackoverflow.com/questions/16736856/what-should-be-in-my-gitignore-for-an-android-studio-project/18454251#18454251
+# Android Studio / IntelliJ IDEA 
+*.iws
+.idea/libraries
+.idea/tasks.xml
+.idea/vcs.xml
+.idea/workspace.xml
