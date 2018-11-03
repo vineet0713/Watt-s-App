@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Watt\'s App</string>
+    <string name="addItemButton">Add Device</string>
 </resources>
