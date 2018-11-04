@@ -30,6 +30,9 @@ public class User {
         if (devices == null) {
             devices = new ArrayList<>();
         }
+        if(devices.contains(d)){
+            return;
+        }
         devices.add(d);
     }
 

@@ -5,4 +5,5 @@ public interface DeviceConstants {
     String DEVICENAME = "device";
     String INDEX = "index";
     String COMPANYNAME = "company";
+    String MODELNAME = "model";
 }

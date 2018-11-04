@@ -16,13 +16,22 @@ import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
 public class DeviceSelectionActivity extends AppCompatActivity {
 
+    Bundle deviceBundle = new Bundle();
+
+    public void cleanBundle(){
+        deviceBundle.remove(INDEX);
+        deviceBundle.remove(DEVICENAME);
+    }
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_selection);
 
+        setTitle("Select Device");
+
         final Intent companyIntent = new Intent(this, CompanySelectionActivity.class);
-        final Bundle deviceBundle = new Bundle();
 
         String[] devices = {"Laptop", "Desktop","Phone","Tablet","TV","Smart Watch"};
 
@@ -38,8 +47,6 @@ public class DeviceSelectionActivity extends AppCompatActivity {
                 deviceBundle.putInt(INDEX, position);
                 companyIntent.putExtras(deviceBundle);
                 startActivity(companyIntent);
-                deviceBundle.remove(DEVICENAME);
-                deviceBundle.remove(INDEX);
             }
         });
 
