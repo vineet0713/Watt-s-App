@@ -7,8 +7,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.DeviceSelectionActivity;
+import com.example.vjoshi.wattsapp.profile.ProfileActivity;
+import com.example.vjoshi.wattsapp.profile.TopProfileFragment;
+// For Redeem class
+// https://www.youtube.com/watch?v=hl0AcuplFwE
 
-public class Home_Activity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     Bundle mainBundle = new Bundle();
 
@@ -31,6 +35,15 @@ public class Home_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 //Need to pass user so we can add device
                 startActivity(deviceIntent);
+            }
+        });
+
+        final Intent profileIntent = new Intent(this, ProfileActivity.class);
+        final Button profileButton = findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(profileIntent);
             }
         });
 

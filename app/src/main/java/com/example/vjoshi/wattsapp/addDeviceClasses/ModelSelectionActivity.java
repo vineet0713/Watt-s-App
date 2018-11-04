@@ -13,10 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.vjoshi.wattsapp.Device;
-import com.example.vjoshi.wattsapp.Home_Activity;
+import com.example.vjoshi.wattsapp.HomeActivity;
 import com.example.vjoshi.wattsapp.R;
-
-import java.util.Random;
 
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
@@ -84,7 +82,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
 
     public void createAlert(final String device, final String company, final String model){
 
-        final Intent mainIntent = new Intent(this, Home_Activity.class);
+        final Intent mainIntent = new Intent(this, HomeActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ModelSelectionActivity.this);
