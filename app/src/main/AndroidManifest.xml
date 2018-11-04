@@ -15,6 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".addDeviceClasses.DeviceSelectionActivity"></activity>
+        <activity android:name=".addDeviceClasses.CompanySelectionActivity"></activity>
+        <activity android:name=".addDeviceClasses.ModelSelectionActivity"></activity>
+
+
     </application>
 
 </manifest>
