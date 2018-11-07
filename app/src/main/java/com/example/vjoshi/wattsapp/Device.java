@@ -1,5 +1,9 @@
 package com.example.vjoshi.wattsapp;
 
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class Device {
     public int id;
     public String type, company, model;
@@ -17,46 +21,57 @@ public class Device {
         this.usageRatePerMinute = usageRatePerMinute;
     }
 
+    @Exclude
     public int getId() {
         return id;
     }
 
+    @Exclude
     public void setId(int id) {
         this.id = id;
     }
 
+    @Exclude
     public String getType() {
         return type;
     }
 
+    @Exclude
     public void setType(String type) {
         this.type = type;
     }
 
+    @Exclude
     public String getCompany() {
         return company;
     }
 
+    @Exclude
     public void setCompany(String company) {
         this.company = company;
     }
 
+    @Exclude
     public String getModel() {
         return model;
     }
 
+    @Exclude
     public void setModel(String model) {
         this.model = model;
     }
 
+    @Exclude
     public double getUsageRatePerMinute() {
         return usageRatePerMinute;
     }
 
+    @Exclude
     public void setUsageRatePerMinute(double usageRatePerMinute) {
         this.usageRatePerMinute = usageRatePerMinute;
     }
 
+    @Exclude
     @Override
     public String toString() {
         return "Device{" +
