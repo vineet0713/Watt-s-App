@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
 
     private EditText emailField, passwordField;
-    private Button finishButton, joinButton;
+    private Button signinButton, joinButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,8 @@ public class SignInActivity extends AppCompatActivity {
                 if (user != null) {
                     // user is signed in!
                     Log.d(TAG, "user is signed in!");
+                    Log.d(TAG, "display name: " + user.getDisplayName());
+                    Log.d(TAG, "email: " + user.getEmail());
                 } else {
                     // user is not signed in
                     Log.d(TAG, "user is not signed in");
@@ -53,11 +55,11 @@ public class SignInActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.editText3);
         clearTextFields();
 
-        finishButton = findViewById(R.id.button3);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+        signinButton = findViewById(R.id.button3);
+        signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finishPressed();
+                signinPressed();
             }
         });
 
@@ -82,12 +84,26 @@ public class SignInActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
-    private void finishPressed() {
+    private void signinPressed() {
         hideKeyboard();
 
-        Log.d(TAG, "finishPressed");
-        Log.d(TAG, emailField.getText().toString());
-        Log.d(TAG, passwordField.getText().toString());
+        Log.d(TAG, "signinPressed");
+
+        String email = emailField.getText().toString();
+        String password = passwordField.getText().toString();
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d(TAG, "sign in successful!");
+                    // TODO: go to some other Activity after successful sign in
+                } else {
+                    Log.d(TAG, "sign in failed: " + task.getException());
+                    displayAlert("Sign In Failed", task.getException().getMessage());
+                }
+                clearTextFields();
+            }
+        });
     }
 
     private void joinPressed() {
@@ -96,12 +112,13 @@ public class SignInActivity extends AppCompatActivity {
         Log.d(TAG, "joinPressed");
 
         String email = emailField.getText().toString();
-        final String password = passwordField.getText().toString();
+        String password = passwordField.getText().toString();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Log.d(TAG, "create user successful!");
+                    // TODO: go to some other Activity after successful sign up
                 } else {
                     Log.d(TAG, "create user failed: " + task.getException());
                     displayAlert("Create User Failed", task.getException().getMessage());
