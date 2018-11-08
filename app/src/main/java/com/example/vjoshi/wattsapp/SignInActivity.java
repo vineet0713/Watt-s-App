@@ -2,6 +2,7 @@ package com.example.vjoshi.wattsapp;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,8 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Intent homeIntent = new Intent(this, HomeActivity.class);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
@@ -59,7 +62,7 @@ public class SignInActivity extends AppCompatActivity {
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signinPressed();
+                signinPressed(homeIntent);
             }
         });
 
@@ -67,7 +70,7 @@ public class SignInActivity extends AppCompatActivity {
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                joinPressed();
+                joinPressed(homeIntent);
             }
         });
     }
@@ -84,7 +87,8 @@ public class SignInActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
-    private void signinPressed() {
+    private void signinPressed(final Intent intent) {
+
         hideKeyboard();
 
         Log.d(TAG, "signinPressed");
@@ -96,7 +100,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Log.d(TAG, "sign in successful!");
-                    // TODO: go to some other Activity after successful sign in
+                    startActivity(intent);
                 } else {
                     Log.d(TAG, "sign in failed: " + task.getException());
                     displayAlert("Sign In Failed", task.getException().getMessage());
@@ -106,7 +110,19 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    private void joinPressed() {
+    private void createAlert(String title, String message){
+        AlertDialog alertDialog = new AlertDialog.Builder(SignInActivity.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+    private void joinPressed(final Intent intent) {
         hideKeyboard();
 
         Log.d(TAG, "joinPressed");
@@ -118,7 +134,9 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Log.d(TAG, "create user successful!");
-                    // TODO: go to some other Activity after successful sign up
+                    createAlert("User Created", "Thanks for joining the team! Sign in to get started");
+                    emailField.setText("");
+                    passwordField.setText("");
                 } else {
                     Log.d(TAG, "create user failed: " + task.getException());
                     displayAlert("Create User Failed", task.getException().getMessage());
