@@ -31,6 +31,8 @@ public class HomeActivity extends AppCompatActivity {
 
 
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
+        //https://www.javatpoint.com/android-context-menu-example
+        //Context Menu for delete device
         //https://www.dev2qa.com/android-alert-dialog-example/
         //May want to do selection with dialogs
         final Button addDeviceButton = findViewById(R.id.itemButton);
