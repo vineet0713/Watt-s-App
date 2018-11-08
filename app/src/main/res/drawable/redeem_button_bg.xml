@@ -5,6 +5,4 @@
     <stroke android:width="5px" android:color="@color/blue" />
     <border android:width="2px"
         />
-    <width android:width="50dp"/>
-    <height android:height="50dp"/>
 </shape>
