@@ -100,6 +100,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Log.d(TAG, "sign in successful!");
+                    saveUsername();
                     startActivity(intent);
                 } else {
                     Log.d(TAG, "sign in failed: " + task.getException());
@@ -108,6 +109,12 @@ public class SignInActivity extends AppCompatActivity {
                 clearTextFields();
             }
         });
+    }
+
+    private void saveUsername() {
+        MySQLiteHelper myDB = new MySQLiteHelper(this);
+        // maybe do something if 'setUsername' returns false?
+        myDB.setUsername(emailField.getText().toString());
     }
 
     private void createAlert(String title, String message){

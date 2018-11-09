@@ -18,6 +18,8 @@ public class Backend {
     private static final String TAG = "Backend";
 
     private DatabaseReference database;
+    private MySQLiteHelper myDB;
+
     private String username;
 
     private static final Backend INSTANCE = new Backend();
@@ -28,9 +30,6 @@ public class Backend {
     private Backend() {
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
-
-        // get the username
-        username = "user1";
     }
 
 
@@ -38,6 +37,10 @@ public class Backend {
     /*
         START OF BACKEND API
     */
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public void addDevice(final Device deviceToAdd) {
         database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {

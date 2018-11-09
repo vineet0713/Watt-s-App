@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vjoshi.wattsapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,20 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity">
+        <activity android:name=".LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addDeviceClasses.DeviceSelectionActivity"></activity>
-        <activity android:name=".addDeviceClasses.CompanySelectionActivity"></activity>
-        <activity android:name=".addDeviceClasses.ModelSelectionActivity"></activity>
-        <activity android:name=".profile.ProfileActivity"></activity>
-        <activity android:name=".HomeActivity"/>
-
-
-
+        <activity android:name=".addDeviceClasses.DeviceSelectionActivity" />
+        <activity android:name=".addDeviceClasses.CompanySelectionActivity" />
+        <activity android:name=".addDeviceClasses.ModelSelectionActivity" />
+        <activity android:name=".profile.ProfileActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".SignInActivity"></activity>
     </application>
 
 </manifest>

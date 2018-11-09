@@ -63,9 +63,17 @@ public class HomeActivity extends AppCompatActivity {
                 // for testing purposes, adds a sample set of 3 users
                 Backend.getInstance().addSampleUsers(3);
 
+                // for testing purposes, clear the username as if the user has logged out
+                logout();
+
                 startActivity(profileIntent);
             }
         });
 
+    }
+
+    private void logout() {
+        MySQLiteHelper myDB = new MySQLiteHelper(this);
+        myDB.clearUsername();
     }
 }
