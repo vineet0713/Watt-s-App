@@ -2,9 +2,9 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg">
 
 
     <LinearLayout
@@ -25,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Electronics"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:gravity="center"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -35,13 +36,15 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@mipmap/target_logo" />
+                    android:background="@mipmap/target_logo"
+                    />
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -88,7 +91,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Food"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:gravity="center"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -148,7 +152,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Clothing"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:gravity="center"/>/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
@@ -157,7 +162,70 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:background="@mipmap/target_logo" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activities"
+            android:textSize="30dp"
+            android:gravity="center"/>/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
 
                 <ImageButton
                     android:layout_width="wrap_content"
