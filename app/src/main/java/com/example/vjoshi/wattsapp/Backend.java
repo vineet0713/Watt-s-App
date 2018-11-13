@@ -37,12 +37,14 @@ public class Backend {
         START OF BACKEND API
     */
 
+    public String getUsername() { return username; }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
     public void addUser(String username, String password) {
-        setUsername(username);
+        this.username = username;
         User u = new User(username, password, 0);
         database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
