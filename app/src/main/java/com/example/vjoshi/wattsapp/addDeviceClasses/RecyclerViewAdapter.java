@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
-    } 
+    }
 
 
 
@@ -51,16 +51,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         Log.d(TAG, "onBindViewHolder: called.");
         final Intent companyIntent = new Intent(mContext, CompanySelectionActivity.class);
+        final Intent modelIntent = new Intent(mContext, ModelSelectionActivity.class);
 
 
         Glide.with(mContext).asBitmap().load(mImages.get(i)).into(viewHolder.imageView);
         viewHolder.imageName.setText(mImageNames.get(i));
-        
+
+
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on: " + mImageNames.get(i));
-                String selectedDevice = getDeviceName(i);
+                String selectedDevice = mImageNames.get(i);
                 deviceBundle.putString(DEVICENAME, selectedDevice);
                 deviceBundle.putInt(INDEX, i);
                 companyIntent.putExtras(deviceBundle);
@@ -68,30 +70,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //Toast.makeText(mContext, mImageNames.get(i), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-    public String getDeviceName(int i){
-        String selectedDevice = "";
-        switch (i){
-            case 1:
-                selectedDevice = "Laptop";
-                break;
-            case 2:
-                selectedDevice = "Desktop";
-                break;
-            case 3:
-                selectedDevice = "Phone";
-                break;
-            case 4:
-                selectedDevice = "Tablet";
-                break;
-            case 5:
-                selectedDevice = "TV";
-                break;
-            case 6:
-                selectedDevice = "Smart Watch";
-                break;
-        }
-        return selectedDevice;
     }
 
     //Tells adapter how many items are in the list

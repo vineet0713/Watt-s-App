@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -22,9 +22,9 @@
         <activity android:name=".addDeviceClasses.CompanySelectionActivity" />
         <activity android:name=".addDeviceClasses.ModelSelectionActivity" />
         <activity android:name=".profile.ProfileActivity" />
-        <!--<activity android:name=".HomeActivity" />-->
-        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".HomeActivity"></activity>
         <activity android:name=".TestRedeemActivity"></activity>
+        <activity android:name=".SignInActivity"></activity>
     </application>
 
 </manifest>

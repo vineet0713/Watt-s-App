@@ -65,6 +65,8 @@ public class ModelSelectionActivity extends AppCompatActivity {
         final String device = modelBundle.getString(DEVICENAME);
         final String company = modelBundle.getString(COMPANYNAME);
 
+
+        System.out.println("\nCompany: " + company + "\n" + "Device: " + device);
         setListAdapter(company, device);
 
 
@@ -93,7 +95,12 @@ public class ModelSelectionActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 Device newDevice = new Device((int) (Math.random() * 50 + 1), device, company, model, 0.0);
                 dialog.dismiss();
+                Bundle bundle = new Bundle();
+                bundle.putString(MODELNAME, model);
+                System.out.println("MODEL: " + model);
+                HomeActivity.setButtonParameters(bundle);
                 startActivity(mainIntent);
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

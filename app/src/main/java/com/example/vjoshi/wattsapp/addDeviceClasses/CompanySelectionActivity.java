@@ -74,6 +74,7 @@ public class CompanySelectionActivity extends AppCompatActivity {
         final Intent passedCompanyIntent = getIntent();
         companyBundle = passedCompanyIntent.getExtras();
 
+        System.out.println("Device FROM COMPANY CLASS: " + companyBundle.getString(DEVICENAME));
         int index = companyBundle.getInt(INDEX);
 
         companyList = findViewById(R.id.companyList);
