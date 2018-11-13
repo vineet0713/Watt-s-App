@@ -18,7 +18,6 @@ public class Backend {
     private static final String TAG = "Backend";
 
     private DatabaseReference database;
-    private MySQLiteHelper myDB;
 
     private String username;
 
@@ -40,6 +39,17 @@ public class Backend {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void addUser(String username, String password) {
+        setUsername(username);
+        User u = new User(username, password, 0);
+        database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                onCompleteMethod(task);
+            }
+        });
     }
 
     public void addDevice(final Device deviceToAdd) {

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.example.vjoshi.wattsapp.Backend;
 import com.example.vjoshi.wattsapp.Device;
 import com.example.vjoshi.wattsapp.HomeActivity;
 import com.example.vjoshi.wattsapp.R;
@@ -94,6 +95,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Device newDevice = new Device((int) (Math.random() * 50 + 1), device, company, model, 0.0);
+                Backend.getInstance().addDevice(newDevice);
                 dialog.dismiss();
                 Bundle bundle = new Bundle();
                 bundle.putString(MODELNAME, model);
