@@ -13,4 +13,6 @@ public class TestRedeemActivity extends AppCompatActivity{
         setContentView(R.layout.activity_redeem);
 
     }
+
+    
 }
