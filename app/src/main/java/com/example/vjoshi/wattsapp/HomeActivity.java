@@ -95,15 +95,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // for testing purposes, adds a sample device:
-                Device deviceToAdd = new Device(10, "Desktop", "Apple", "Mac Mini", 0.09);
-                Backend.getInstance().addDevice(deviceToAdd);
+                //Device deviceToAdd = new Device(10, "Desktop", "Apple", "Mac Mini", 0.09);
+                //Backend.getInstance().addDevice(deviceToAdd);
 
                 // for testing purposes, returns a list of all devices
-                ArrayList<Device> userDevices = Backend.getInstance().getDevices();
-                Log.d(TAG, "about to print");
-                for (Device d : userDevices) {
-                    Log.d(TAG, d.toString());
-                }
+                //ArrayList<Device> userDevices = Backend.getInstance().getDevices();
+//                Log.d(TAG, "about to print");
+//                for (Device d : userDevices) {
+//                    Log.d(TAG, d.toString());
+//                }
 
                 //Need to pass user so we can add device
                 startActivity(deviceIntent);
@@ -128,5 +128,6 @@ public class HomeActivity extends AppCompatActivity {
     private void logout() {
         MySQLiteHelper myDB = new MySQLiteHelper(this);
         myDB.clearUsername();
+        myDB.close();
     }
 }

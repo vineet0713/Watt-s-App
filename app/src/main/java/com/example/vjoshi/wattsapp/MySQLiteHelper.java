@@ -2,9 +2,11 @@ package com.example.vjoshi.wattsapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "data.db";
@@ -30,9 +32,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean usernameExists() {
+    public String getUsername() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return (DatabaseUtils.queryNumEntries(db, TABLE_NAME) != 0);
+
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        if (res.getCount() == 0) {
+            return null;
+        } else {
+            res.moveToNext();
+            String username = res.getString(0);
+            setUsername(username);
+            return username;
+        }
     }
 
     public boolean setUsername(String username) {
@@ -45,6 +57,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("USERNAME", username);
         long result = db.insert(TABLE_NAME, null, contentValues);
+        db.close();
 
         // result will be -1 if the values were not inserted
         return (result != -1);
@@ -55,5 +68,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         db.execSQL("DELETE FROM " + TABLE_NAME);
+
+        db.close();
     }
 }

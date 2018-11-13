@@ -32,8 +32,6 @@ public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final Intent homeIntent = new Intent(this, HomeActivity.class);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
@@ -62,7 +60,7 @@ public class SignInActivity extends AppCompatActivity {
         signinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signinPressed(homeIntent);
+                signinPressed();
             }
         });
 
@@ -70,7 +68,7 @@ public class SignInActivity extends AppCompatActivity {
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                joinPressed(homeIntent);
+                joinPressed();
             }
         });
     }
@@ -87,34 +85,37 @@ public class SignInActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
-    private void signinPressed(final Intent intent) {
+    private void signinPressed() {
 
         hideKeyboard();
 
         Log.d(TAG, "signinPressed");
 
-        String email = emailField.getText().toString();
+        final String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    String username = email.substring(0, email.indexOf('@'));
+                    Backend.getInstance().setUsername(username);
+                    saveUsername(username);
+
                     Log.d(TAG, "sign in successful!");
-                    saveUsername();
-                    startActivity(intent);
+                    goToHomePage();
                 } else {
                     Log.d(TAG, "sign in failed: " + task.getException());
-                    displayAlert("Sign In Failed", task.getException().getMessage());
+                    displayAlert("Sign In Failed", task.getException().getMessage(), false);
                 }
                 clearTextFields();
             }
         });
     }
 
-    private void saveUsername() {
+    private void saveUsername(String username) {
         MySQLiteHelper myDB = new MySQLiteHelper(this);
         // maybe do something if 'setUsername' returns false?
-        myDB.setUsername(emailField.getText().toString());
+        myDB.setUsername(username);
     }
 
     private void createAlert(String title, String message){
@@ -129,24 +130,27 @@ public class SignInActivity extends AppCompatActivity {
                 });
         alertDialog.show();
     }
-    private void joinPressed(final Intent intent) {
+
+    private void joinPressed() {
         hideKeyboard();
 
         Log.d(TAG, "joinPressed");
 
-        String email = emailField.getText().toString();
-        String password = passwordField.getText().toString();
+        final String email = emailField.getText().toString();
+        final String password = passwordField.getText().toString();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    String username = email.substring(0, email.indexOf('@'));
+                    Backend.getInstance().addUser(username, password);
+                    saveUsername(username);
+
                     Log.d(TAG, "create user successful!");
-                    createAlert("User Created", "Thanks for joining the team! Sign in to get started");
-                    emailField.setText("");
-                    passwordField.setText("");
+                    displayAlert("User Created", "Thanks for joining the team!", true);
                 } else {
                     Log.d(TAG, "create user failed: " + task.getException());
-                    displayAlert("Create User Failed", task.getException().getMessage());
+                    displayAlert("Create User Failed", task.getException().getMessage(), false);
                 }
                 clearTextFields();
             }
@@ -158,12 +162,26 @@ public class SignInActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 
-    private void displayAlert(String title, String message) {
+    private void displayAlert(String title, String message, boolean proceed) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
         builder.setMessage(message);
-        builder.setPositiveButton("Ok", null);
+        if (proceed == true) {
+            builder.setPositiveButton("Get Started", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    goToHomePage();
+                }
+            });
+        } else {
+            builder.setPositiveButton("Ok", null);
+        }
         builder.show();
+    }
+
+    private void goToHomePage() {
+        Intent homeIntent = new Intent(this, HomeActivity.class);
+        startActivity(homeIntent);
     }
 
     private void clearTextFields() {
