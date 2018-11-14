@@ -9,6 +9,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridLayout;
@@ -38,14 +39,14 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference database;
     private ChildEventListener listener;
 
-    private ArrayList<Device> devices =  new ArrayList<>();;
+    private ArrayList<Button> deviceButtons = new ArrayList<>();
 
     private static GridLayout gridLayout = null;
     private static Context context = null;
 
     private static String device, company, model, longPressButton;
 
-    private int buttonRow, buttonCol;
+    private int deletePosition;
     private User user;
 
 
@@ -159,11 +160,13 @@ public class HomeActivity extends AppCompatActivity {
             newButton.setBackgroundResource(R.drawable.button_bg);
             registerForContextMenu(newButton);
             gridLayout.addView(newButton);
+            deviceButtons.add(newButton);
 
             newButton.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     longPressButton = newButton.getText().toString() + " " +position;
+                    deletePosition = position;
                     //Toast.makeText(getApplicationContext(),newButton.getText() + " button has been pressed",Toast.LENGTH_LONG).show();
                     return false;
                 }
@@ -194,12 +197,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public boolean onContextItemSelected(MenuItem item){
-        if(item.getItemId()==R.id.edit){
-            Toast.makeText(getApplicationContext(),"Editing Device",Toast.LENGTH_LONG).show();
-        }
-        else if(item.getItemId()==R.id.delete){
+        if(item.getItemId()==R.id.delete){
             Toast.makeText(getApplicationContext(),"Deleting Device " + longPressButton,Toast.LENGTH_LONG).show();
-
+            gridLayout.removeView(deviceButtons.get(deletePosition));
         }else{
             return false;
         }
