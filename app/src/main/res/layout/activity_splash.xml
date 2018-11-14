@@ -13,26 +13,22 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/mainText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:layout_gravity="center"
-            android:layout_marginTop="150dp"
-            android:textSize="60sp"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/subtext"
-            android:layout_width="398dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Loading"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:layout_marginTop="50dp"/>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:background="@mipmap/ic_watts_app_background" />
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/subtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Loading"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 </LinearLayout>
