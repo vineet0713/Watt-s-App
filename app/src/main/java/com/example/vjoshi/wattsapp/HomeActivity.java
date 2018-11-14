@@ -1,8 +1,11 @@
 package com.example.vjoshi.wattsapp;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -19,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
     private DatabaseReference database;
-    private ChildEventListener listener;
 
     private ArrayList<Button> deviceButtons = new ArrayList<>();
 
@@ -46,7 +50,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private static String device, company, model, longPressButton;
 
-    private int deletePosition;
     private User user;
 
 
@@ -128,7 +131,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         loadDevices();
-        registerForContextMenu(addDeviceButton);
     }
 
 
@@ -158,7 +160,6 @@ public class HomeActivity extends AppCompatActivity {
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
             newButton.setBackgroundResource(R.drawable.button_bg);
-            registerForContextMenu(newButton);
             gridLayout.addView(newButton);
             deviceButtons.add(newButton);
 
@@ -166,8 +167,7 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public boolean onLongClick(View v) {
                     longPressButton = newButton.getText().toString() + " " +position;
-                    deletePosition = position;
-                    //Toast.makeText(getApplicationContext(),newButton.getText() + " button has been pressed",Toast.LENGTH_LONG).show();
+                    confirmDelete(position);
                     return false;
                 }
             });
@@ -182,28 +182,43 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    private void confirmDelete(final int indexToDelete) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirm Delete");
+        builder.setMessage("Are you sure you want to delete this device?");
+        builder.setNegativeButton("No", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                final String username = Backend.getInstance().getUsername();
+                database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        user.removeDevice(indexToDelete);
+                        final User modifiedUser = user;
+                        database.child(username).setValue(modifiedUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // delete the actual button:
+                                gridLayout.removeView(deviceButtons.get(indexToDelete));
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) { }
+                });
+            }
+        });
+
+        builder.show();
+    }
+
     private void logout() {
         MySQLiteHelper myDB = new MySQLiteHelper(this);
         myDB.clearUsername();
         myDB.close();
-    }
-
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
-    {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        menu.setHeaderTitle("Select The Action");
-    }
-
-    public boolean onContextItemSelected(MenuItem item){
-        if(item.getItemId()==R.id.delete){
-            Toast.makeText(getApplicationContext(),"Deleting Device " + longPressButton,Toast.LENGTH_LONG).show();
-            gridLayout.removeView(deviceButtons.get(deletePosition));
-        }else{
-            return false;
-        }
-        return true;
     }
 
 }
