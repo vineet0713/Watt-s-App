@@ -1,5 +1,6 @@
 package com.example.vjoshi.wattsapp.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.Button;
 
 import com.example.vjoshi.wattsapp.MySQLiteHelper;
 import com.example.vjoshi.wattsapp.R;
+import com.example.vjoshi.wattsapp.SignInActivity;
 
 public class ProfileActivity extends AppCompatActivity implements BottomProfileFragment.TopSectionListener{
     @Override
@@ -26,9 +28,12 @@ public class ProfileActivity extends AppCompatActivity implements BottomProfileF
     }
 
     private void logout() {
+        Intent logoutIntent = new Intent(this, SignInActivity.class);
         MySQLiteHelper myDB = new MySQLiteHelper(this);
         myDB.clearUsername();
         myDB.close();
+
+        startActivity(logoutIntent);
     }
 
     @Override
