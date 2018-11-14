@@ -10,25 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/logo"
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:background="@mipmap/ic_watts_app_background" />
 
-
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saving you Watts"
+        android:textSize="40sp"
+        android:layout_gravity="center"/>
 
     <TextView
         android:id="@+id/subtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="Loading"
         android:textAlignment="center"
         android:textSize="30sp" />
+
+
 </LinearLayout>
