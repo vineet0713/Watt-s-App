@@ -118,8 +118,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        //https://www.javatpoint.com/android-context-menu-example
-        //Context Menu for delete device
         addDeviceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

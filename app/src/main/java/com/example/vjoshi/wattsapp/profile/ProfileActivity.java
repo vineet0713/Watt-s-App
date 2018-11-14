@@ -2,7 +2,10 @@ package com.example.vjoshi.wattsapp.profile;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.vjoshi.wattsapp.MySQLiteHelper;
 import com.example.vjoshi.wattsapp.R;
 
 public class ProfileActivity extends AppCompatActivity implements BottomProfileFragment.TopSectionListener{
@@ -10,6 +13,22 @@ public class ProfileActivity extends AppCompatActivity implements BottomProfileF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+
+    }
+
+    private void logout() {
+        MySQLiteHelper myDB = new MySQLiteHelper(this);
+        myDB.clearUsername();
+        myDB.close();
     }
 
     @Override
