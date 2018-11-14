@@ -4,17 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 
-import com.example.vjoshi.wattsapp.addDeviceClasses.DeviceSelectionActivity;
+import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
-
-import java.util.ArrayList;
 
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
@@ -27,9 +24,33 @@ public class HomeActivity extends AppCompatActivity {
     private static GridLayout gridLayout = null;
     private static Context context = null;
 
-    private static String company, model;
+    private static String device, company, model;
     private static int count = 0;
 
+
+    public static String getDevice() {
+        return device;
+    }
+
+    public static void setDevice(String device) {
+        HomeActivity.device = device;
+    }
+
+    public static String getCompany() {
+        return company;
+    }
+
+    public static void setCompany(String company) {
+        HomeActivity.company = company;
+    }
+
+    public static String getModel() {
+        return model;
+    }
+
+    public static void setModel(String model) {
+        HomeActivity.model = model;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

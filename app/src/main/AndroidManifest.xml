@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addDeviceClasses.DeviceSelectionActivity" />
-        <activity android:name=".addDeviceClasses.CompanySelectionActivity" />
-        <activity android:name=".addDeviceClasses.ModelSelectionActivity" />
+        <activity android:name=".addDeviceClasses.activities.DeviceSelectionActivity" />
+        <activity android:name=".addDeviceClasses.activities.CompanySelectionActivity" />
+        <activity android:name=".addDeviceClasses.activities.ModelSelectionActivity" />
         <activity android:name=".profile.ProfileActivity" />
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".TestRedeemActivity"></activity>
