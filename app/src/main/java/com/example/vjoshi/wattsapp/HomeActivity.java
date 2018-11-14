@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
@@ -40,7 +44,9 @@ public class HomeActivity extends AppCompatActivity {
     private static Context context = null;
 
     private static String device, company, model;
-    private static int count = 0;
+
+    private User user;
+
 
 
     public static String getDevice() {
@@ -120,14 +126,17 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         loadDevices();
+        registerForContextMenu(addDeviceButton);
     }
+
+
 
     private void loadDevices() {
         String username = Backend.getInstance().getUsername();
         database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+                user = dataSnapshot.getValue(User.class);
                 addDeviceButtons(user.getDevices());
             }
             @Override
@@ -145,6 +154,7 @@ public class HomeActivity extends AppCompatActivity {
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
             newButton.setBackgroundResource(R.drawable.button_bg);
+            registerForContextMenu(newButton);
             gridLayout.addView(newButton);
         }
     }
@@ -154,4 +164,26 @@ public class HomeActivity extends AppCompatActivity {
         myDB.clearUsername();
         myDB.close();
     }
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        menu.setHeaderTitle("Select The Action");
+    }
+
+    public boolean onContextItemSelected(MenuItem item){
+        if(item.getItemId()==R.id.edit){
+            Toast.makeText(getApplicationContext(),"Editing Device",Toast.LENGTH_LONG).show();
+        }
+        else if(item.getItemId()==R.id.delete){
+            Toast.makeText(getApplicationContext(),"Deleting Device " + item.getTitle(),Toast.LENGTH_LONG).show();
+
+        }else{
+            return false;
+        }
+        return true;
+    }
+
 }
