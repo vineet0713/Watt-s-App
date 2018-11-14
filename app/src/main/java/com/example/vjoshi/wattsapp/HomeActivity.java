@@ -104,12 +104,6 @@ public class HomeActivity extends AppCompatActivity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // for testing purposes, adds a sample set of 3 users
-                Backend.getInstance().addSampleUsers(3);
-
-                // for testing purposes, clear the username as if the user has logged out
-                logout();
-
                 startActivity(profileIntent);
             }
         });
@@ -130,8 +124,6 @@ public class HomeActivity extends AppCompatActivity {
 
         loadDevices();
     }
-
-
 
     private void loadDevices() {
         String username = Backend.getInstance().getUsername();
@@ -211,12 +203,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         builder.show();
-    }
-
-    private void logout() {
-        MySQLiteHelper myDB = new MySQLiteHelper(this);
-        myDB.clearUsername();
-        myDB.close();
     }
 
 }
