@@ -18,7 +18,7 @@ public class Splash extends AppCompatActivity {
 
         RotateAnimation animation = new RotateAnimation(180f, 360f,400,2000);
         //animation.setRepeatCount(Animation.INFINITE);
-        animation.setDuration(2000);
+        animation.setDuration(3200);
         final TextView subtv =(TextView) findViewById(R.id.subtext);
         subtv.setText("Loading.");
         subtv.setText("Loading..");
@@ -39,8 +39,6 @@ public class Splash extends AppCompatActivity {
                 nextPage();
             }
         });
-        animation.setDuration(1000);
-        animation.start();
 
     }
     public void nextPage(){
