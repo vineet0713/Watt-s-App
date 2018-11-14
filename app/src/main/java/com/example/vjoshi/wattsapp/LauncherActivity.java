@@ -17,6 +17,7 @@ public class LauncherActivity extends AppCompatActivity {
         String username = myDB.getUsername();
         if (username != null) {
             Backend.getInstance().setUsername(username);
+
             intent = new Intent(this, HomeActivity.class);
         } else {
             intent = new Intent(this, SignInActivity.class);

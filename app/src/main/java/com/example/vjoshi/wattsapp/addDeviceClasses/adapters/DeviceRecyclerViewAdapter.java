@@ -1,4 +1,4 @@
-package com.example.vjoshi.wattsapp.addDeviceClasses;
+package com.example.vjoshi.wattsapp.addDeviceClasses.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.vjoshi.wattsapp.HomeActivity;
 import com.example.vjoshi.wattsapp.R;
+import com.example.vjoshi.wattsapp.addDeviceClasses.activities.CompanySelectionActivity;
+import com.example.vjoshi.wattsapp.addDeviceClasses.activities.ModelSelectionActivity;
 
 import java.util.ArrayList;
 
@@ -21,9 +24,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.DEVICENAME;
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.INDEX;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class DeviceRecyclerViewAdapter extends RecyclerView.Adapter<DeviceRecyclerViewAdapter.ViewHolder> {
 
-    private static final String TAG = "RecyclerViewAdapter";
+    private static final String TAG = "DeviceAdapter";
     final static Bundle deviceBundle = new Bundle();
 
     private ArrayList<String> mImageNames = new ArrayList<>();
@@ -31,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
 
 
-    public RecyclerViewAdapter(ArrayList<String> mImageNames, ArrayList<String> mImages, Context mContext) {
+    public DeviceRecyclerViewAdapter(ArrayList<String> mImageNames, ArrayList<String> mImages, Context mContext) {
         this.mImageNames = mImageNames;
         this.mImages = mImages;
         this.mContext = mContext;
@@ -51,7 +54,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder viewHolder, final int i) {
         Log.d(TAG, "onBindViewHolder: called.");
         final Intent companyIntent = new Intent(mContext, CompanySelectionActivity.class);
-        final Intent modelIntent = new Intent(mContext, ModelSelectionActivity.class);
 
 
         Glide.with(mContext).asBitmap().load(mImages.get(i)).into(viewHolder.imageView);
@@ -63,9 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on: " + mImageNames.get(i));
                 String selectedDevice = mImageNames.get(i);
-                deviceBundle.putString(DEVICENAME, selectedDevice);
-                deviceBundle.putInt(INDEX, i);
-                companyIntent.putExtras(deviceBundle);
+                HomeActivity.setDevice(selectedDevice);
                 mContext.startActivity(companyIntent);
                 //Toast.makeText(mContext, mImageNames.get(i), Toast.LENGTH_SHORT).show();
             }

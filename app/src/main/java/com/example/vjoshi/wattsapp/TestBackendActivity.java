@@ -36,34 +36,34 @@ public class TestBackendActivity extends AppCompatActivity {
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
 
-        switch (OPERATION) {
-            // CASE 1 AND CASE 2 ARE IN HomeActivity.java FOR TESTING PURPOSES
-            case 1:
-                // add 3 sample users
-                Backend.getInstance().addSampleUsers(3);
-                break;
-            case 2:
-                // add a new device to user1
-                Device deviceToAdd = new Device(10, "Desktop", "Apple", "Mac Mini", 0.09);
-                Backend.getInstance().addDevice(deviceToAdd);
-                break;
-            case 3:
-                // test whether trying to add an existing username works or not
-                final String usernameToAdd = "usernameToAdd";
-                database.child(usernameToAdd).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            userExists(usernameToAdd, this);
-                        } else {
-                            userDoesntExist(usernameToAdd, this);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) { }
-                });
-                break;
-        }
+//        switch (OPERATION) {
+//            // CASE 1 AND CASE 2 ARE IN HomeActivity.java FOR TESTING PURPOSES
+//            case 1:
+//                // add 3 sample users
+//                Backend.getInstance().addSampleUsers(3);
+//                break;
+//            case 2:
+//                // add a new device to user1
+//                Device deviceToAdd = new Device(10, "Desktop", "Apple", "Mac Mini", 0.09);
+//                Backend.getInstance().addDevice(deviceToAdd);
+//                break;
+//            case 3:
+//                // test whether trying to add an existing username works or not
+//                final String usernameToAdd = "usernameToAdd";
+//                database.child(usernameToAdd).addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        if (dataSnapshot.exists()) {
+//                            userExists(usernameToAdd, this);
+//                        } else {
+//                            userDoesntExist(usernameToAdd, this);
+//                        }
+//                    }
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) { }
+//                });
+//                break;
+//        }
     }
 
     private void userExists(String usernameToAdd, ValueEventListener valueEventListener) {

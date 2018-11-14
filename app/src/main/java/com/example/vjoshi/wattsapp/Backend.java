@@ -37,12 +37,14 @@ public class Backend {
         START OF BACKEND API
     */
 
+    public String getUsername() { return username; }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
     public void addUser(String username, String password) {
-        setUsername(username);
+        this.username = username;
         User u = new User(username, password, 0);
         database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -50,50 +52,6 @@ public class Backend {
                 onCompleteMethod(task);
             }
         });
-    }
-
-    public void addDevice(final Device deviceToAdd) {
-        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            // 'onDataChange' will be called immediately after this ValueEventListener is added
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i(TAG, "onDataChange called!");
-
-                User user = dataSnapshot.getValue(User.class);
-                user.addDevice(deviceToAdd);
-                final User modifiedUser = user;
-                database.child(username).setValue(modifiedUser).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) { onCompleteMethod(task); }
-                });
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
-    }
-
-    public ArrayList<Device> getDevices() {
-        final ArrayList<Device> devices = new ArrayList<>();
-
-        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            // 'onDataChange' will be called immediately after this ValueEventListener is added
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.i(TAG, "onDataChange called!");
-
-                User user = dataSnapshot.getValue(User.class);
-                ArrayList<Device> userDevices = user.getDevices();
-                // MAYBE ASSIGN 'userDevices' TO AN ARRAY ADAPTER? THIS CAN CHANGE THE UI!
-                for (Device d : userDevices) {
-                    devices.add(d);
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
-
-        // THIS WILL ALWAYS RETURN EMPTY BECAUSE FIREBASE CAN'T FETCH DATA SYNCHRONOUSLY!
-        return devices;
     }
 
     /*
