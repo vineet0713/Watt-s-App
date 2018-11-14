@@ -108,16 +108,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/gridLayout"
             android:columnCount="3"
-            android:padding="30dp"
-            android:layout_margin="30dp">
+            android:padding="40dp">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
                 android:background="@drawable/button_bg"
                 android:text="Add Device"
                 android:textColor="@color/blue"
-                android:id="@+id/itemButton"/>
+                android:textStyle="bold"
+                android:id="@+id/itemButton"
+                />
 
         </GridLayout>
 

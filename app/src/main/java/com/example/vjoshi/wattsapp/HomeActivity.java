@@ -110,8 +110,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-
         //https://www.javatpoint.com/android-context-menu-example
         //Context Menu for delete device
         addDeviceButton.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +138,13 @@ public class HomeActivity extends AppCompatActivity {
     private void addDeviceButtons(ArrayList<Device> devices) {
         for (Device d : devices) {
             Button newButton = new Button(context);
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+            params.setMargins(20, 20, 20, 20);
+            params.width = 250;
+            params.height = 150;
+            newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
+            newButton.setBackgroundResource(R.drawable.button_bg);
             gridLayout.addView(newButton);
         }
     }
