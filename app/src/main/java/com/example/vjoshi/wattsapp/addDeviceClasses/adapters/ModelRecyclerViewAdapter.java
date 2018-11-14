@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,14 @@ import com.example.vjoshi.wattsapp.Backend;
 import com.example.vjoshi.wattsapp.Device;
 import com.example.vjoshi.wattsapp.HomeActivity;
 import com.example.vjoshi.wattsapp.R;
+import com.example.vjoshi.wattsapp.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -107,11 +116,27 @@ public class ModelRecyclerViewAdapter extends RecyclerView.Adapter<ModelRecycler
         builder.setMessage("Do you wish to add this device? \n" + company + " " + model);
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                Device newDevice = new Device((int) (Math.random() * 50 + 1), device, company, model, 0.0);
-                Backend.getInstance().addDevice(newDevice);
-                dialog.dismiss();
-                mContext.startActivity(mainIntent);
+            public void onClick(final DialogInterface dialog, int id) {
+                final Device newDevice = new Device((int) (Math.random() * 50 + 1), device, company, model, 0.0);
+                final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                final String username = Backend.getInstance().getUsername();
+                database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        user.addDevice(newDevice);
+                        final User modifiedUser = user;
+                        database.child(username).setValue(modifiedUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                dialog.dismiss();
+                                mContext.startActivity(mainIntent);
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) { }
+                });
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

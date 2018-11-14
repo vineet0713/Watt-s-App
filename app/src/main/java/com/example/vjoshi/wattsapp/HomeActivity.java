@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
 
     private DatabaseReference database;
+    private ChildEventListener listener;
 
     private ArrayList<Device> devices =  new ArrayList<>();;
 
@@ -94,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
                 Backend.getInstance().addSampleUsers(3);
 
                 // for testing purposes, clear the username as if the user has logged out
-                //logout();
+                logout();
 
                 startActivity(profileIntent);
             }
@@ -118,53 +121,28 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
+        loadDevices();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
+    private void loadDevices() {
         String username = Backend.getInstance().getUsername();
-        database.child(username).child("devices").addChildEventListener(new ChildEventListener() {
+        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Device d = dataSnapshot.getValue(Device.class);
-                devices.add(d);
-                addDeviceButton(d.getModel());
-                devicesUpdated();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                addDeviceButtons(user.getDevices());
             }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                Device d = dataSnapshot.getValue(Device.class);
-                devices.remove(d);
-                devicesUpdated();
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
     }
 
-    public static void addDeviceButton(String model){
-        Button newButton = new Button(context);
-        newButton.setText(model);
-        gridLayout.addView(newButton);
-    }
-
-    /*
-    NOTE TO KEN:
-    THE FOLLOWING METHOD IS CALLED EVERY TIME A DEVICE IS ADDED OR REMOVED
-    */
-    private void devicesUpdated() {
-        Log.d(TAG, "Updated 'devices' ArrayList: " + devices.toString());
+    private void addDeviceButtons(ArrayList<Device> devices) {
+        for (Device d : devices) {
+            Button newButton = new Button(context);
+            newButton.setText(d.getModel());
+            gridLayout.addView(newButton);
+        }
     }
 
     private void logout() {
