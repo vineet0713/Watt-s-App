@@ -52,30 +52,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
 
             </LinearLayout>
@@ -105,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
 
                 <ImageButton
@@ -112,30 +118,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
             </LinearLayout>
         </HorizontalScrollView>
@@ -164,6 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
 
                 <ImageButton
@@ -171,30 +183,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
                     android:background="@mipmap/ic_target_background"
+                    android:onClick="showPopUp"
                     />
             </LinearLayout>
         </HorizontalScrollView>
