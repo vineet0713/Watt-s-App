@@ -37,8 +37,8 @@ public class User {
     }
 
     @Exclude
-    public void removeDevice(Device d) {
-        devices.remove(d);
+    public void removeDevice(int index) {
+        devices.remove(index);
     }
 
     @Exclude

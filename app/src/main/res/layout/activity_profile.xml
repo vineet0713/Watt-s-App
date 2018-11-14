@@ -7,6 +7,13 @@
     tools:context=".profile.ProfileActivity"
     android:background="@drawable/login_bg">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/logoutButton"
+        android:background="@drawable/button_bg"/>
+
     <fragment
         android:id="@+id/fragmentTop"
         android:name="com.example.vjoshi.wattsapp.profile.TopProfileFragment"
