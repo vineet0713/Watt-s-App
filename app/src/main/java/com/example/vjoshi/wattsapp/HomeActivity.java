@@ -43,8 +43,9 @@ public class HomeActivity extends AppCompatActivity {
     private static GridLayout gridLayout = null;
     private static Context context = null;
 
-    private static String device, company, model;
+    private static String device, company, model, longPressButton;
 
+    private int buttonRow, buttonCol;
     private User user;
 
 
@@ -145,8 +146,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void addDeviceButtons(ArrayList<Device> devices) {
-        for (Device d : devices) {
-            Button newButton = new Button(context);
+        for(int i =0; i < devices.size(); i++){
+            final int position = i;
+            Device d = devices.get(i);
+            final Button newButton = new Button(context);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(20, 20, 20, 20);
             params.width = 250;
@@ -156,7 +159,24 @@ public class HomeActivity extends AppCompatActivity {
             newButton.setBackgroundResource(R.drawable.button_bg);
             registerForContextMenu(newButton);
             gridLayout.addView(newButton);
+
+            newButton.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    longPressButton = newButton.getText().toString() + " " +position;
+                    //Toast.makeText(getApplicationContext(),newButton.getText() + " button has been pressed",Toast.LENGTH_LONG).show();
+                    return false;
+                }
+            });
+
+            newButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
+
     }
 
     private void logout() {
@@ -178,7 +198,7 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"Editing Device",Toast.LENGTH_LONG).show();
         }
         else if(item.getItemId()==R.id.delete){
-            Toast.makeText(getApplicationContext(),"Deleting Device " + item.getTitle(),Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Deleting Device " + longPressButton,Toast.LENGTH_LONG).show();
 
         }else{
             return false;
