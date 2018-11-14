@@ -12,6 +12,11 @@ import android.widget.ScrollView;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
@@ -20,6 +25,10 @@ import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
+
+    private DatabaseReference database;
+
+    private ArrayList<Device> devices;
 
     private static GridLayout gridLayout = null;
     private static Context context = null;
@@ -59,7 +68,11 @@ public class HomeActivity extends AppCompatActivity {
 
         setTitle("Watt's App");
 
-        final User user = new User();
+        // this is the root of the database
+        database = FirebaseDatabase.getInstance().getReference();
+
+        devices = new ArrayList<>();
+
         final Intent profileIntent = new Intent(this, ProfileActivity.class);
         final Intent redeemIntent = new Intent(this, TestRedeemActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
@@ -134,6 +147,37 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        String username = Backend.getInstance().getUsername();
+        database.child(username).child("devices").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Device d = dataSnapshot.getValue(Device.class);
+                devices.add(d);
+                devicesUpdated();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Device d = dataSnapshot.getValue(Device.class);
+                devices.remove(d);
+                devicesUpdated();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+    }
+
     public static void setButtonParameters(Bundle bundle){
         //company = bundle.getString(MODELNAME);
         model = bundle.getString(MODELNAME);
@@ -144,6 +188,14 @@ public class HomeActivity extends AppCompatActivity {
         System.out.println("Model: " + model);
         newButton.setText(model);
         gridLayout.addView(newButton);
+    }
+
+    /*
+    NOTE TO KEN:
+    THE FOLLOWING METHOD IS CALLED EVERY TIME A DEVICE IS ADDED OR REMOVED
+    */
+    private void devicesUpdated() {
+        Log.d(TAG, "Updated 'devices' ArrayList: " + devices.toString());
     }
 
     private void logout() {

@@ -3,6 +3,8 @@ package com.example.vjoshi.wattsapp;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.Objects;
+
 @IgnoreExtraProperties
 public class Device {
     public int id;
@@ -81,5 +83,23 @@ public class Device {
                 ", model='" + model + '\'' +
                 ", usageRatePerMinute=" + usageRatePerMinute +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return id == device.id &&
+                Double.compare(device.usageRatePerMinute, usageRatePerMinute) == 0 &&
+                Objects.equals(type, device.type) &&
+                Objects.equals(company, device.company) &&
+                Objects.equals(model, device.model);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, type, company, model, usageRatePerMinute);
     }
 }
