@@ -1,7 +1,9 @@
 package com.example.vjoshi.wattsapp;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -17,8 +19,7 @@ public class Splash extends AppCompatActivity {
 
 
         RotateAnimation animation = new RotateAnimation(180f, 360f,400,2000);
-        //animation.setRepeatCount(Animation.INFINITE);
-        animation.setDuration(3200);
+        animation.setDuration(2000);
         final TextView subtv =(TextView) findViewById(R.id.subtext);
         subtv.setText("Loading.");
         subtv.setText("Loading..");
@@ -36,9 +37,17 @@ public class Splash extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation arg0) {
                 subtv.setText("Ready!");
-                nextPage();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        nextPage();
+                    }
+                }, 1000);
             }
         });
+
+
 
     }
     public void nextPage(){
