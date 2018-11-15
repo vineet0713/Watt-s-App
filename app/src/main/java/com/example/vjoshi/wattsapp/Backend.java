@@ -45,7 +45,7 @@ public class Backend {
 
     public void addUser(String username, String password) {
         this.username = username;
-        User u = new User(username, password, 0);
+        User u = new User(username, 0);
         database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -64,24 +64,24 @@ public class Backend {
         START OF TESTER FUNCTIONS
     */
 
-    public void addSampleUsers(int number) {
-        for (int i = 1; i <= number; i++) {
-            String username = "user" + i;
-            User u = new User(username, ("password" + i), 0);
-
-            for (int k = 1; k <= i; k++) {
-                Device d = new Device(i+k, "Laptop", "Apple", "MacBook Pro", 0.04);
-                u.addDevice(d);
-                u.addUsageEntry(new UsageEntry(d, new Date(), 100, 400));
-                u.addRedeemableItem(new RedeemableItem("test item", "test description", 9.98));
-            }
-
-            database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) { onCompleteMethod(task); }
-            });
-        }
-    }
+//    public void addSampleUsers(int number) {
+//        for (int i = 1; i <= number; i++) {
+//            String username = "user" + i;
+//            User u = new User(username, ("password" + i), 0);
+//
+//            for (int k = 1; k <= i; k++) {
+//                Device d = new Device(i+k, "Laptop", "Apple", "MacBook Pro", 0.04);
+//                u.addDevice(d);
+//                u.addUsageEntry(new UsageEntry(d, new Date(), 100, 400));
+//                u.addRedeemableItem(new RedeemableItem("test item", "test description", 9.98));
+//            }
+//
+//            database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) { onCompleteMethod(task); }
+//            });
+//        }
+//    }
 
     /*
         END OF TESTER FUNCTIONS

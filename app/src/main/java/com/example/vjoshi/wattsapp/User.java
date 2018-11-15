@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @IgnoreExtraProperties
 public class User {
     // username should be the key to a User object in Firebase
-    public String username, password;
+    public String username;
     public long totalPoints;
 
     public ArrayList<Device> devices;
@@ -19,9 +19,8 @@ public class User {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, String password, long totalPoints) {
+    public User(String username, long totalPoints) {
         this.username = username;
-        this.password = password;
         this.totalPoints = totalPoints;
     }
 
@@ -29,9 +28,6 @@ public class User {
     public void addDevice(Device d) {
         if (devices == null) {
             devices = new ArrayList<>();
-        }
-        if(devices.contains(d)){
-            return;
         }
         devices.add(d);
     }
@@ -43,6 +39,9 @@ public class User {
 
     @Exclude
     public ArrayList<Device> getDevices() {
+        if (devices == null) {
+            devices = new ArrayList<>();
+        }
         return devices;
     }
 

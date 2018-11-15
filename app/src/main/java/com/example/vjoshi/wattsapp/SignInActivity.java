@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = "SignInActivity";
@@ -143,11 +145,21 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     String username = email.substring(0, email.indexOf('@'));
-                    Backend.getInstance().addUser(username, password);
+
+                    // saves username to the local database
                     saveUsername(username);
 
-                    Log.d(TAG, "create user successful!");
-                    displayAlert("User Created", "Thanks for joining the team!", true);
+                    // saves the user to the backend
+                    Backend.getInstance().setUsername(username);
+                    User u = new User(username, 0);
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                    database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d(TAG, "create user successful!");
+                            displayAlert("User Created", "Thanks for joining the team!", true);
+                        }
+                    });
                 } else {
                     Log.d(TAG, "create user failed: " + task.getException());
                     displayAlert("Create User Failed", task.getException().getMessage(), false);
