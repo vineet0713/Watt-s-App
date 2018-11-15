@@ -47,6 +47,55 @@ public interface DeviceConstants {
     String IPHONEXS = "iPhone XS";
     String IPHONEXR = "iPhone XR";
 
+    //Samsung Phones
+    String SAMSUNGS6 = "Samsung S6";
+    String SAMSUNGS7 = "Samsung S7";
+    String SAMSUNGS7EDGE = "Samsung S7EDGE";
+    String SAMSUNGS8 = "Samsung S8";
+    String SAMSUNGS8PLUS = "Samsung S8+";
+    String SAMSUNGS9PLUS = "Samsung S9+";
+
+
+    //Google Phones
+    String PIXEL = "Pixel";
+    String PIXELXL = "Pixel XL";
+    String PIXEL2 = "Pixel 2";
+    String PIXEL2XL = "Pixel 2XL";
+    String PIXEL3 = "Pixel 3";
+    String PIXEL3XL = "Pixel 3XL";
+
+    //Windows Phones
+    String LUMIA550 = "Lumia 550";
+    String LUMIA650 = "Lumia 650";
+    String LUMIA950 = "Lumia 950";
+
+
+
+    //Apple Laptops
+    String IMAC = "iMac";
+    String MACPRO = "Mac Pro";
+    String MACBOOKPRO13 = "Macbook Pro 13'";
+    String MACBOOKPRO15 = "Macbook Pro 15'";
+    String MACBOOKAIR = "Macbook Air";
+
+    //String Dell Laptops
+    String XPS = "XPS";
+    String INSPIRON = "Inspiron";
+    String LATITUDE = "Latitude";
+
+    //Windows Laptops
+    String ZENBOOK = "Zenbook Series";
+    String ROG = "Republic of Gamers";
+    String VIVOPRO = "VivoBook Pro";
+    String QSERIES = "Q Series";
+
+    //HP Laptop
+    String ELITEBOOK = "Elite Book";
+    String ENVY = "Envy";
+    String SPECTRE = "Specture";
+    String PAVILION = "Pavilion";
+
+
     //URLS
     String APPLEURL = "https://cdn3.iconfinder.com/data/icons/picons-social/57/16-apple-512.png";
     String DELLURL = "https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Dell_alt.png";

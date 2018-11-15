@@ -138,6 +138,9 @@ public class SignInActivity extends AppCompatActivity {
 
         final String email = emailField.getText().toString();
         final String password = passwordField.getText().toString();
+
+        Log.d(TAG, "EMAIL: " + email);
+        Log.d(TAG, "PASSWORD: " + password);
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
