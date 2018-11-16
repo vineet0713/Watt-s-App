@@ -221,7 +221,7 @@ public class HomeActivity extends AppCompatActivity {
                     // turn the device off, so save the UsageEntry
                     long timePeriod = (System.currentTimeMillis() - device.getStartTime()) / 1000;
                     double wattsUsed = device.getUsageRate() * timePeriod;
-                    UsageEntry entry = new UsageEntry(device.getDeviceName(), wattsUsed);
+                    UsageEntry entry = new UsageEntry(device.getType(), device.getDeviceName(), wattsUsed);
                     user.addUsageEntry(entry);
                 }
                 final String newStatus = (status.equals("OFF")) ? "ON" : "OFF";

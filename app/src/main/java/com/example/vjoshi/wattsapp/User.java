@@ -10,6 +10,7 @@ public class User {
     // username should be the key to a User object in Firebase
     public String username;
     public long totalPoints;
+    public double totalWatts;
 
     public ArrayList<Device> devices;
     public ArrayList<UsageEntry> usageEntries;
@@ -22,6 +23,7 @@ public class User {
     public User(String username, long totalPoints) {
         this.username = username;
         this.totalPoints = totalPoints;
+        totalWatts = 0.0;
     }
 
     @Exclude
@@ -54,6 +56,7 @@ public class User {
             usageEntries = new ArrayList<>();
         }
         usageEntries.add(ue);
+        totalWatts += ue.wattsUsed;
     }
 
     @Exclude
@@ -63,6 +66,9 @@ public class User {
         }
         return usageEntries;
     }
+
+    @Exclude
+    public double getTotalWatts() { return totalWatts; }
 
     @Exclude
     public void addRedeemableItem(RedeemableItem ri) {

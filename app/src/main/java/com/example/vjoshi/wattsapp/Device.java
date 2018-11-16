@@ -68,6 +68,7 @@ public class Device {
         this.model = model;
     }
 
+    @Exclude
     public String getDeviceName() { return (company + " " + model); }
 
     @Exclude

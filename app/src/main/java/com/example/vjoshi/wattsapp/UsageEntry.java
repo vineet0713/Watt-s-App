@@ -3,14 +3,15 @@ package com.example.vjoshi.wattsapp;
 import java.util.Date;
 
 public class UsageEntry {
-    public String deviceName;
+    public String deviceType, deviceName;
     public double wattsUsed;
 
     public UsageEntry() {
         // Default constructor required for calls to DataSnapshot.getValue(UsageEntry.class)
     }
 
-    public UsageEntry(String deviceName, double wattsUsed) {
+    public UsageEntry(String deviceType, String deviceName, double wattsUsed) {
+        this.deviceType = deviceType;
         this.deviceName = deviceName;
         this.wattsUsed = wattsUsed;
     }
