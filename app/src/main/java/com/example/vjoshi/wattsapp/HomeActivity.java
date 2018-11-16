@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
             newButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    updateUsageEntry(position);
                 }
             });
         }
@@ -203,6 +203,48 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         builder.show();
+    }
+
+    private void updateUsageEntry(final int indexToUpdate) {
+        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        final String username = Backend.getInstance().getUsername();
+        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                Device device = user.getDevices().get(indexToUpdate);
+                String status = device.getStatus();
+                if (status.equals("OFF")) {
+                    // turn the device on, so set the start time (epoch time in milliseconds)
+                    device.setStartTime(System.currentTimeMillis());
+                } else if (status.equals("ON")) {
+                    // turn the device off, so save the UsageEntry
+                    long timePeriod = (System.currentTimeMillis() - device.getStartTime()) / 1000;
+                    double wattsUsed = device.getUsageRate() * timePeriod;
+                    UsageEntry entry = new UsageEntry(device.getDeviceName(), wattsUsed);
+                    user.addUsageEntry(entry);
+                }
+                final String newStatus = (status.equals("OFF")) ? "ON" : "OFF";
+                device.setStatus(newStatus);
+
+                user.setDevice(indexToUpdate, device);
+
+                final User modifiedUser = user;
+                database.child(username).setValue(modifiedUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // UPDATE THE UI TO SHOW EITHER DEVICE IS ON OR OFF
+//                        if (newStatus.equals("OFF")) {
+//
+//                        } else if (newStatus.equals("ON")) {
+//
+//                        }
+                    }
+                });
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
     }
 
 }

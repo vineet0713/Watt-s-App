@@ -13,13 +13,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Backend {
     private static final String TAG = "Backend";
 
-    private DatabaseReference database;
-
     private String username;
+
+    private HashMap<String, Integer> deviceToIdMap;
+    private HashMap<String, Double> deviceToUsageMap;
 
     private static final Backend INSTANCE = new Backend();
     public static Backend getInstance() {
@@ -27,8 +29,11 @@ public class Backend {
     }
 
     private Backend() {
-        // this is the root of the database
-        database = FirebaseDatabase.getInstance().getReference();
+        deviceToIdMap = new HashMap<>();
+        setDeviceToIdMap();
+
+        deviceToUsageMap = new HashMap<>();
+        setDeviceToUsageMap();
     }
 
 
@@ -43,15 +48,12 @@ public class Backend {
         this.username = username;
     }
 
-    public void addUser(String username, String password) {
-        this.username = username;
-        User u = new User(username, 0);
-        database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                onCompleteMethod(task);
-            }
-        });
+    public int getIdForDevice(String deviceName) {
+        return deviceToIdMap.get(deviceName).intValue();
+    }
+
+    public double getUsageForDevice(String deviceName) {
+        return deviceToUsageMap.get(deviceName).doubleValue();
     }
 
     /*
@@ -93,17 +95,24 @@ public class Backend {
         START OF HELPER FUNCTIONS
     */
 
-    private void onCompleteMethod(@NonNull Task<Void> task) {
-        if (task.isComplete()) {
-            Log.d(TAG, "Task completed!");
-            if (task.isSuccessful()) {
-                Log.d(TAG, "Task completed successfully!");
-            } else {
-                Log.d(TAG, "Task completed with error.");
-            }
-        } else {
-            Log.d(TAG, "Task did not complete.");
-        }
+    private void setDeviceToIdMap() {
+        deviceToIdMap.put("Apple iPhone 6", new Integer(1));
+        deviceToIdMap.put("Apple iPhone 6s", new Integer(2));
+        deviceToIdMap.put("Apple iPhone 8", new Integer(3));
+        deviceToIdMap.put("Apple iPhone 8s", new Integer(4));
+        deviceToIdMap.put("Apple iPhone X", new Integer(5));
+        deviceToIdMap.put("Apple iPhone XS", new Integer(6));
+        deviceToIdMap.put("Apple iPhone XR", new Integer(7));
+    }
+
+    private void setDeviceToUsageMap() {
+        deviceToUsageMap.put("Apple iPhone 6", new Double(3));
+        deviceToUsageMap.put("Apple iPhone 6s", new Double(3.5));
+        deviceToUsageMap.put("Apple iPhone 8", new Double(5));
+        deviceToUsageMap.put("Apple iPhone 8s", new Double(5.5));
+        deviceToUsageMap.put("Apple iPhone X", new Double(8));
+        deviceToUsageMap.put("Apple iPhone XS", new Double(9));
+        deviceToUsageMap.put("Apple iPhone XR", new Double(8));
     }
 
     /*

@@ -9,18 +9,23 @@ import java.util.Objects;
 public class Device {
     public int id;
     public String type, company, model;
-    public double usageRatePerMinute;
+    public double usageRate;
+    public String status;  // this could be "OFF" or "ON"
+    public long startTime;
 
     public Device() {
         // Default constructor required for calls to DataSnapshot.getValue(Device.class)
     }
 
-    public Device(int id, String type, String company, String model, double usageRatePerMinute) {
-        this.id = id;
+    public Device(String type, String company, String model) {
         this.type = type;
         this.company = company;
         this.model = model;
-        this.usageRatePerMinute = usageRatePerMinute;
+
+        this.id = Backend.getInstance().getIdForDevice(this.getDeviceName());
+        this.usageRate = Backend.getInstance().getUsageForDevice(this.getDeviceName());
+
+        this.status = "OFF";
     }
 
     @Exclude
@@ -63,15 +68,29 @@ public class Device {
         this.model = model;
     }
 
+    public String getDeviceName() { return (company + " " + model); }
+
     @Exclude
-    public double getUsageRatePerMinute() {
-        return usageRatePerMinute;
+    public double getUsageRate() {
+        return usageRate;
     }
 
     @Exclude
-    public void setUsageRatePerMinute(double usageRatePerMinute) {
-        this.usageRatePerMinute = usageRatePerMinute;
+    public void setUsageRate(double usageRate) {
+        this.usageRate = usageRate;
     }
+
+    @Exclude
+    public String getStatus() { return status; }
+
+    @Exclude
+    public void setStatus(String status) { this.status = status; }
+
+    @Exclude
+    public long getStartTime() { return startTime; }
+
+    @Exclude
+    public void setStartTime(long startTime) { this.startTime = startTime; }
 
     @Exclude
     @Override
@@ -81,7 +100,7 @@ public class Device {
                 ", type='" + type + '\'' +
                 ", company='" + company + '\'' +
                 ", model='" + model + '\'' +
-                ", usageRatePerMinute=" + usageRatePerMinute +
+                ", usageRate=" + usageRate +
                 '}';
     }
 
@@ -91,7 +110,7 @@ public class Device {
         if (o == null || getClass() != o.getClass()) return false;
         Device device = (Device) o;
         return id == device.id &&
-                Double.compare(device.usageRatePerMinute, usageRatePerMinute) == 0 &&
+                Double.compare(device.usageRate, usageRate) == 0 &&
                 Objects.equals(type, device.type) &&
                 Objects.equals(company, device.company) &&
                 Objects.equals(model, device.model);
@@ -100,6 +119,6 @@ public class Device {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, type, company, model, usageRatePerMinute);
+        return Objects.hash(id, type, company, model, usageRate);
     }
 }

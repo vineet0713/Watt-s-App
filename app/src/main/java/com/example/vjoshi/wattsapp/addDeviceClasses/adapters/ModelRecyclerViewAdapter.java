@@ -117,7 +117,7 @@ public class ModelRecyclerViewAdapter extends RecyclerView.Adapter<ModelRecycler
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(final DialogInterface dialog, int id) {
-                final Device newDevice = new Device((int) (Math.random() * 50 + 1), device, company, model, 0.0);
+                final Device newDevice = new Device(device, company, model);
                 final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
                 final String username = Backend.getInstance().getUsername();
                 database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {

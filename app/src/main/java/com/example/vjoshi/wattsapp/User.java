@@ -38,6 +38,9 @@ public class User {
     }
 
     @Exclude
+    public void setDevice(int indexToSet, Device updatedDevice) { devices.set(indexToSet, updatedDevice); }
+
+    @Exclude
     public ArrayList<Device> getDevices() {
         if (devices == null) {
             devices = new ArrayList<>();
@@ -55,6 +58,9 @@ public class User {
 
     @Exclude
     public ArrayList<UsageEntry> getUsageEntries() {
+        if (usageEntries == null) {
+            usageEntries = new ArrayList<>();
+        }
         return usageEntries;
     }
 
@@ -68,6 +74,9 @@ public class User {
 
     @Exclude
     public ArrayList<RedeemableItem> getItemsRedeemed() {
+        if (itemsRedeemed == null) {
+            itemsRedeemed = new ArrayList<>();
+        }
         return itemsRedeemed;
     }
 }
