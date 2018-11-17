@@ -45,6 +45,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
         Log.d(TAG, "COMPANY: " + company + " | DEVICE: " + device);
         switch (device){
             case LAPTOP:
+                laptopCompany(company);
                 break;
             case DESKTOP:
                 break;
@@ -63,6 +64,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
     private void laptopCompany(String company){
         switch (company){
             case APPLE:
+                initAppleLaptopBitMaps();
                 break;
             case DELL:
                 break;
@@ -323,6 +325,28 @@ public class ModelSelectionActivity extends AppCompatActivity {
 
         initRecyclerView();
 
+    }
+
+    private void initAppleLaptopBitMaps(){
+
+        Log.d(TAG, "Apple Laptop BitMaps");
+
+        mImageUrls.add(APPLEURL);
+        mNames.add(IMAC);
+
+        mImageUrls.add(APPLEURL);
+        mNames.add(MACPRO);
+
+        mImageUrls.add(APPLEURL);
+        mNames.add(MACBOOKPRO13);
+
+        mImageUrls.add(APPLEURL);
+        mNames.add(MACBOOKPRO15);
+
+        mImageUrls.add(APPLEURL);
+        mNames.add(MACBOOKAIR);
+
+        initRecyclerView();
     }
 
     private void initRecyclerView(){
