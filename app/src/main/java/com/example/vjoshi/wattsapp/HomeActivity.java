@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
@@ -142,16 +145,30 @@ public class HomeActivity extends AppCompatActivity {
         for(int i =0; i < devices.size(); i++){
             final int position = i;
             Device d = devices.get(i);
-            final Button newButton = new Button(context);
+            String status = d.getStatus();
+            final ToggleButton newButton = new ToggleButton(context);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(20, 20, 20, 20);
             params.width = 250;
             params.height = 150;
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
-            newButton.setBackgroundResource(R.drawable.button_bg);
+
+            if(status.equalsIgnoreCase("ON")){
+                newButton.setTextOn(d.getModel() + " Active");
+                newButton.setChecked(true);
+                Log.d(TAG, "Device " + d.getModel() + " is Active");
+            }else if(status.equalsIgnoreCase("OFF")){
+                newButton.setTextOff(d.getModel() + " Inactive");
+                newButton.setChecked(false);
+                Log.d(TAG, "Device " + d.getModel() + " is Inactive");
+            }
+            newButton.setTextOff(d.getModel() + " Inactive");
+            newButton.setTextOn(d.getModel() + " Active");
+            newButton.setBackgroundResource(R.drawable.button_background);
             gridLayout.addView(newButton);
             deviceButtons.add(newButton);
+
 
             newButton.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -168,8 +185,8 @@ public class HomeActivity extends AppCompatActivity {
                     updateUsageEntry(position);
                 }
             });
-        }
 
+    }
     }
 
     private void confirmDelete(final int indexToDelete) {
