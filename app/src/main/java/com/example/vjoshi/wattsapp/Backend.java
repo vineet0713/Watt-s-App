@@ -3,6 +3,7 @@ package com.example.vjoshi.wattsapp;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -96,23 +97,35 @@ public class Backend {
     */
 
     private void setDeviceToIdMap() {
-        deviceToIdMap.put("Apple iPhone 6", new Integer(1));
-        deviceToIdMap.put("Apple iPhone 6s", new Integer(2));
-        deviceToIdMap.put("Apple iPhone 8", new Integer(3));
-        deviceToIdMap.put("Apple iPhone 8s", new Integer(4));
-        deviceToIdMap.put("Apple iPhone X", new Integer(5));
-        deviceToIdMap.put("Apple iPhone XS", new Integer(6));
-        deviceToIdMap.put("Apple iPhone XR", new Integer(7));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE6, new Integer(1));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE6S, new Integer(2));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE8, new Integer(3));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE8S, new Integer(4));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEX, new Integer(5));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEXR, new Integer(6));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEXS, new Integer(7));
+
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IMAC, new Integer(8));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACPRO, new Integer(9));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKPRO13, new Integer(10));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKPRO15, new Integer(11));
+        deviceToIdMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKAIR, new Integer(12));
     }
 
     private void setDeviceToUsageMap() {
-        deviceToUsageMap.put("Apple iPhone 6", new Double(3));
-        deviceToUsageMap.put("Apple iPhone 6s", new Double(3.5));
-        deviceToUsageMap.put("Apple iPhone 8", new Double(5));
-        deviceToUsageMap.put("Apple iPhone 8s", new Double(5.5));
-        deviceToUsageMap.put("Apple iPhone X", new Double(8));
-        deviceToUsageMap.put("Apple iPhone XS", new Double(9));
-        deviceToUsageMap.put("Apple iPhone XR", new Double(8));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE6, new Double(3));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE6S, new Double(3.5));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE8, new Double(5));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONE8S, new Double(5.5));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEX, new Double(8));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEXR, new Double(9));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IPHONEXS, new Double(8));
+
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.IMAC, new Double(30));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACPRO, new Double(40));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKPRO13, new Double(20));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKPRO15, new Double(25));
+        deviceToUsageMap.put(DeviceConstants.APPLE + " " + DeviceConstants.MACBOOKAIR, new Double(15));
     }
 
     /*
