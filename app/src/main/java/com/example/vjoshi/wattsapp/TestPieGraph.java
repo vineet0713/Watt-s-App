@@ -16,7 +16,7 @@ public class TestPieGraph extends AppCompatActivity{
 
     private static String TAG = "TestPieGraph";
     private String[] devices = {"D1","D2","D3","D4","D5","D6"};
-    private float[] watts = {10,2,13,43,13,85};
+    private float[] watts = {10, 2, 13, 43, 13, 85};
 
 
     PieChart piechart;
@@ -41,13 +41,11 @@ public class TestPieGraph extends AppCompatActivity{
         //pieChart.setDrawEntryLabels(true);
         //pieChart.setEntryLabelTextSize(20);
         //More options just check out the documentation!
-
         addDataSet();
 
 
 
     }
-
     private void addDataSet() {
         Log.d(TAG, "addDataSet started");
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
@@ -57,7 +55,7 @@ public class TestPieGraph extends AppCompatActivity{
             yEntrys.add(new PieEntry(watts[i] , i));
         }
 
-        for(int i = 1; i < devices.length; i++){
+        for(int i = 0; i < devices.length; i++){
             xEntrys.add(devices[i]);
         }
 
@@ -86,6 +84,6 @@ public class TestPieGraph extends AppCompatActivity{
 //        //create pie data object
         PieData pieData = new PieData(pieDataSet);
         piechart.setData(pieData);
-//        pieChart.invalidate();
+        piechart.invalidate();
     }
 }
