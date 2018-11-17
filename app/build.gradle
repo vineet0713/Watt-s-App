@@ -39,6 +39,9 @@ dependencies {
     //Cirle Image View
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
+
+    //Required for Charts on the profile page
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }
 
 apply plugin: 'com.google.gms.google-services'
