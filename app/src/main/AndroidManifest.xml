@@ -26,6 +26,7 @@
         <activity android:name="LauncherActivity"/>
         <activity android:name=".TestRedeemActivity"></activity>
         <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".TestPieGraph"></activity>
     </application>
 
 </manifest>
