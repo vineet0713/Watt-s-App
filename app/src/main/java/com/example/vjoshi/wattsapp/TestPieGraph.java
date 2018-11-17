@@ -25,6 +25,7 @@ public class TestPieGraph extends AppCompatActivity{
 //    private String[] devices = {"D1","D2","D3","D4","D5","D6"};
 //    private float[] watts = {10,2,13,43,13,85};
 
+
     // this is for testing purposes (to switch between grouping by devices, and grouping by device type)
     private static final String PIE_CHART_TYPE = "DEVICES";
 //    private static final String PIE_CHART_TYPE = "DEVICE_TYPES";
@@ -53,14 +54,12 @@ public class TestPieGraph extends AppCompatActivity{
         //pieChart.setDrawEntryLabels(true);
         //pieChart.setEntryLabelTextSize(20);
         //More options just check out the documentation!
-<<<<<<< HEAD
-        addDataSet();
-=======
+
 
         devices = new ArrayList<>();
         watts = new ArrayList<>();
     }
->>>>>>> c905571843e0aea100d1da50c07d3fc869f30af1
+
 
     @Override
     protected void onResume() {
@@ -112,17 +111,13 @@ public class TestPieGraph extends AppCompatActivity{
             yEntrys.add(new PieEntry(watts.get(i).floatValue(), i));
         }
 
-<<<<<<< HEAD
-        for(int i = 0; i < devices.length; i++){
-            xEntrys.add(devices[i]);
-=======
+
         for(int i = 0; i < devices.size(); i++){
             xEntrys.add(devices.get(i));
->>>>>>> c905571843e0aea100d1da50c07d3fc869f30af1
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Device Usage");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
