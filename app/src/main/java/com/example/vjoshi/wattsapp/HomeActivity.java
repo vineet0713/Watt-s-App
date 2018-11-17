@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
 
-        final Intent profileIntent = new Intent(this, ProfileActivity.class);
+        final Intent profileIntent = new Intent(this, TestPieGraph.class);
         final Intent redeemIntent = new Intent(this, TestRedeemActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
 

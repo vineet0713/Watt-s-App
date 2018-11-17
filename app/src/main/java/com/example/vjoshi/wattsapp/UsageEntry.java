@@ -1,5 +1,7 @@
 package com.example.vjoshi.wattsapp;
 
+import com.google.firebase.database.Exclude;
+
 import java.util.Date;
 
 public class UsageEntry {
@@ -17,6 +19,18 @@ public class UsageEntry {
         this.usageDate = usageDate;
         this.wattsUsed = wattsUsed;
     }
+
+    @Exclude
+    public String getDeviceType() { return deviceType; }
+
+    @Exclude
+    public String getDeviceName() { return deviceName; }
+
+    @Exclude
+    public Date getUsageDate() { return usageDate; }
+
+    @Exclude
+    public double getWattsUsed() { return wattsUsed; }
 
     // USEFUL DATE CONSTANTS (since Date class just stores epoch time in MILLISECONDS - use long not int!):
     // # OF SECONDS IN A DAY: 86400
