@@ -20,6 +20,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+
+        //required for Charts to be used on profile page
+        maven { url 'https://jitpack.io' }
     }
 }
 
