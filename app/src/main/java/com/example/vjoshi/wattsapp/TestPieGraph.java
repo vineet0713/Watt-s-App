@@ -21,8 +21,10 @@ import java.util.HashMap;
 
 public class TestPieGraph extends AppCompatActivity{
     private static String TAG = "TestPieGraph";
+
 //    private String[] devices = {"D1","D2","D3","D4","D5","D6"};
 //    private float[] watts = {10,2,13,43,13,85};
+
 
     // this is for testing purposes (to switch between grouping by devices, and grouping by device type)
     private static final String PIE_CHART_TYPE = "DEVICES";
@@ -53,9 +55,11 @@ public class TestPieGraph extends AppCompatActivity{
         //pieChart.setEntryLabelTextSize(20);
         //More options just check out the documentation!
 
+
         devices = new ArrayList<>();
         watts = new ArrayList<>();
     }
+
 
     @Override
     protected void onResume() {
@@ -98,7 +102,6 @@ public class TestPieGraph extends AppCompatActivity{
             public void onCancelled(DatabaseError databaseError) { }
         });
     }
-
     private void addDataSet() {
         Log.d(TAG, "addDataSet started");
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
@@ -108,12 +111,13 @@ public class TestPieGraph extends AppCompatActivity{
             yEntrys.add(new PieEntry(watts.get(i).floatValue(), i));
         }
 
+
         for(int i = 0; i < devices.size(); i++){
             xEntrys.add(devices.get(i));
         }
 
         //create the data set
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Employee Sales");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Device Usage");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
 
@@ -137,6 +141,6 @@ public class TestPieGraph extends AppCompatActivity{
 //        //create pie data object
         PieData pieData = new PieData(pieDataSet);
         piechart.setData(pieData);
-//        pieChart.invalidate();
+        piechart.invalidate();
     }
 }
