@@ -55,6 +55,9 @@ public class User {
         if (usageEntries == null) {
             usageEntries = new ArrayList<>();
         }
+        if (usageEntries == null || usageEntries.size() == 0) {
+            totalWatts = 0.0;
+        }
         usageEntries.add(ue);
         totalWatts += ue.wattsUsed;
     }

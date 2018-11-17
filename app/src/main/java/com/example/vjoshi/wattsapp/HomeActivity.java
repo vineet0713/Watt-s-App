@@ -35,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
@@ -238,7 +239,8 @@ public class HomeActivity extends AppCompatActivity {
                     // turn the device off, so save the UsageEntry
                     long timePeriod = (System.currentTimeMillis() - device.getStartTime()) / 1000;
                     double wattsUsed = device.getUsageRate() * timePeriod;
-                    UsageEntry entry = new UsageEntry(device.getType(), device.getDeviceName(), wattsUsed);
+                    Date usageDate = new Date(device.getStartTime());
+                    UsageEntry entry = new UsageEntry(device.getType(), device.getDeviceName(), usageDate, wattsUsed);
                     user.addUsageEntry(entry);
                 }
                 final String newStatus = (status.equals("OFF")) ? "ON" : "OFF";
