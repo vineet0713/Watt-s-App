@@ -171,11 +171,12 @@ public class TestPieGraph extends AppCompatActivity{
 
     private void addDataSet() {
         Log.d(TAG, "addDataSet started");
+        String noDataMessage ="Sorry there is no data to display at this time.";
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
         ArrayList<String> xEntrys = new ArrayList<>();
 
         for(int i = 0; i < watts.size(); i++){
-            yEntrys.add(new PieEntry(watts.get(i).floatValue(), i));
+            yEntrys.add(new PieEntry(watts.get(i).floatValue(), devices.get(i)));
         }
 
 
@@ -186,12 +187,14 @@ public class TestPieGraph extends AppCompatActivity{
         //create the data set
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "Device Usage");
         pieDataSet.setSliceSpace(2);
-        pieDataSet.setValueTextSize(12);
+        pieDataSet.setValueTextSize(24);
+
 
         //add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GRAY);
+
         colors.add(Color.BLUE);
+        colors.add(Color.GRAY);
         colors.add(Color.RED);
         colors.add(Color.GREEN);
         colors.add(Color.CYAN);
@@ -208,6 +211,7 @@ public class TestPieGraph extends AppCompatActivity{
 //        //create pie data object
         PieData pieData = new PieData(pieDataSet);
         piechart.setData(pieData);
+        piechart.setNoDataText(noDataMessage);
         piechart.invalidate();
     }
 }
