@@ -84,6 +84,11 @@ public class HomeActivity extends AppCompatActivity {
         HomeActivity.model = model;
     }
 
+    public int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,8 +176,8 @@ public class HomeActivity extends AppCompatActivity {
             final ToggleButton newButton = new ToggleButton(context);
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(20, 20, 20, 20);
-            params.width = 250;
-            params.height = 150;
+            params.width = dpToPx(100);
+            params.height = dpToPx(60);
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
 
