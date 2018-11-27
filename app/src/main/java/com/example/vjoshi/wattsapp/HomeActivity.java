@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private User user;
 
-
+    ProgressBar loadingBar;
 
     public static String getDevice() {
         return device;
@@ -112,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
         gridLayout = findViewById(R.id.gridLayout);
         context = this;
 
+        loadingBar = findViewById(R.id.progressBar);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +158,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadDevices() {
+        loadingBar.setVisibility(ProgressBar.VISIBLE);
+
         String username = Backend.getInstance().getUsername();
         database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -212,8 +216,9 @@ public class HomeActivity extends AppCompatActivity {
                     updateUsageEntry(position);
                 }
             });
+        }
 
-    }
+        loadingBar.setVisibility(ProgressBar.INVISIBLE);
     }
 
     private void confirmDelete(final int indexToDelete) {

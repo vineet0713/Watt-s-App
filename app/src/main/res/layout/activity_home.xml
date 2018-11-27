@@ -5,6 +5,13 @@
     android:background="@drawable/login_bg"
     android:id="@+id/rootLayout">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
     <LinearLayout
         android:id="@+id/iconLayout"
         android:layout_width="wrap_content"
