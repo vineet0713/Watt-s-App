@@ -61,6 +61,9 @@ public class TestBarGraph extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 ArrayList<UsageEntry> entries = user.getUsageEntries();
+                if (entries.isEmpty()) {
+                    return;
+                }
 
                 Calendar calendar = Calendar.getInstance();
 
