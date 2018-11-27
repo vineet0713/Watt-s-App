@@ -94,6 +94,8 @@ public interface DeviceConstants {
     String SPECTRE = "Specture";
     String PAVILION = "Pavilion";
 
+
+
     //Apple Desktop
     String IMAC = "iMac";
 
