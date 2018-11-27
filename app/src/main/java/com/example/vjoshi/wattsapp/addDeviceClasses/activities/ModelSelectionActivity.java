@@ -68,7 +68,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;
@@ -107,7 +107,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;
@@ -148,7 +148,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;
@@ -187,7 +187,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;
@@ -226,7 +226,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;
@@ -265,7 +265,7 @@ public class ModelSelectionActivity extends AppCompatActivity {
                 break;
             case DELL:
                 break;
-            case WINDOWS:
+            case MICROSOFT:
                 break;
             case ASUS:
                 break;

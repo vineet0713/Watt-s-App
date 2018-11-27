@@ -19,7 +19,7 @@ public interface DeviceConstants {
     //Companies
     String APPLE = "Apple";
     String DELL = "Dell";
-    String WINDOWS = "Windows";
+    String MICROSOFT = "Microsoft";
     String ASUS = "Asus";
     String HP = "HP";
     String GOOGLE = "Google";
@@ -34,7 +34,7 @@ public interface DeviceConstants {
     String SONY = "Sony";
     String VIZIO = "Vizio";
     String FITBIT = "Fitbit";
-    String[] companieArray = {APPLE, DELL, WINDOWS, ASUS, HP, GOOGLE, NOKIA, HUAWEI,
+    String[] companieArray = {APPLE, DELL, MICROSOFT, ASUS, HP, GOOGLE, NOKIA, HUAWEI,
                                 SAMSUNG, AMAZON, LENOVO, LG, TOSHIBA, TCL, SONY, VIZIO,FITBIT};
 
 
@@ -64,7 +64,7 @@ public interface DeviceConstants {
     String PIXEL3 = "Pixel 3";
     String PIXEL3XL = "Pixel 3XL";
 
-    //Windows Phones
+    //Microsoft Phones
     String LUMIA550 = "Lumia 550";
     String LUMIA650 = "Lumia 650";
     String LUMIA950 = "Lumia 950";
@@ -72,18 +72,17 @@ public interface DeviceConstants {
 
 
     //Apple Laptops
-    String IMAC = "iMac";
     String MACPRO = "Mac Pro";
     String MACBOOKPRO13 = "Macbook Pro 13'";
     String MACBOOKPRO15 = "Macbook Pro 15'";
     String MACBOOKAIR = "Macbook Air";
 
-    //String Dell Laptops
+    //Dell Laptops
     String XPS = "XPS";
     String INSPIRON = "Inspiron";
     String LATITUDE = "Latitude";
 
-    //Windows Laptops
+    //Asus Laptops
     String ZENBOOK = "Zenbook Series";
     String ROG = "Republic of Gamers";
     String VIVOPRO = "VivoBook Pro";
@@ -95,11 +94,106 @@ public interface DeviceConstants {
     String SPECTRE = "Specture";
     String PAVILION = "Pavilion";
 
+    //Apple Desktop
+    String IMAC = "iMac";
+
+    //Dell Desktop
+    String XPS8930 = "XPS 8930";
+    String INSPIRON5675 = "Inspiron 5675";
+    String ALIENWARER7 = "Alienware Aurora R7";
+
+
+    //Asus Desktop
+    String ASUSG11 = "G11 CD";
+    String ASUSG20 = "ROG G20 CB";
+    String ASUSGT51 = "ROG GT51 CA";
+    String ASUSVIVIO = "VivioPC M32CD";
+
+    //HP Desktop
+    String DESKTOPPAVILION = "Pavilion";
+    String DESKTOPSLIMLIME = "Slimlime";
+    String DESKTOPENVY = "Envy";
+    String DESKTOPCOMPAQ = "Compaq";
+    String DESKTOPELITEDESK = "EliteDesk";
+
+    //Apple Tablets
+    String IPAD10 = "iPad 10'";
+    String IPAD12 = "iPad 12'";
+    String IPADMINI = "iPad Mini";
+
+    //Microsoft Tablet
+    String MICROSOFTPRO3 = "Surface Pro 3";
+    String MICROSOFTPRO4 = "Surface Pro 4";
+    String MICROSOFTGO = "Surface Go";
+
+    //Samsung Tablets
+    String GALAXYTAB10 = "Galaxy Tab S4 10.5'";
+    String GALAXYBOOK2 = "Galaxy Book2 10.5'";
+    String GALAXYTABA10 = "Galaxy Tab A 10.5'";
+    String GALAXYTABA8 = "Galaxy Tab A 8'";
+
+    //Amazon Tablets
+    String AMAZONFIRE10 = "Fire 10";
+    String AMAZONFIRE7 = "Fire 7";
+    String AMAZONFIRE = "Fire";
+    String AMAZONKINDLE = "Kindle";
+
+    //Lenovo Tablets
+    String LENOVOTAB8 = "Tab 4 8'";
+    String LENOVOTAB10 = "Tab 4 10'";
+    String LENOVOYOGA = "Yoga Tab 3'";
+
+
+    //Samsung TVs
+    String SAMSUNGQ7F55 = "Q7F 55'";
+    String SAMSUNGQ7F75 = "Q7F 75'";
+    String SAMSUNGQ6F55 = "Q6F 55'";
+    String SAMSUNGQ6F75 = "Q6F 75'";
+
+    //LG TVs
+    String LGC7P = "OLED C7P";
+    String LGE7P = "OLED E7P";
+    String LGC8 = "OLED C8";
+
+    //Toshiba TVs
+    String TOSHIBAL9300 = "L9300";
+    String TOSHIBAL7350 = "L7350";
+    String TOSHIBAL7300 = "L7300";
+
+    //TCL TVs
+    String TCL6SERIES = "6 Series";
+    String TCLR615 = "R615 Series";
+    String TCLS405 = "S405 Series";
+
+    //Sony TVs
+    String SONYX900F = "X900F";
+    String SONYKDA1 = "KD-A1";
+    String SONYX900E = "X900E";
+
+    //Vizio TVs
+    String VIZIODE0 = "D-Series D-E0";
+    String VIZIOMC1 = "M-Series M-C1";
+
+    //Fitbits
+    String FITBITCHARGE2 = "Charge 2";
+    String FITBITCHARGE3 = "Charge 3";
+    String FITBITVERSA = "Versa";
+
+    //Samsung Smartwatch
+    String SAMSUNGGEARS2 = "Gear S2";
+    String SAMSUNGGEARS3 = "Gear S3";
+    String SAMSUNGGEARS = "Gear";
+
+    //Apple Smart Watch
+    String APPLEWATCH = "Watch";
+    String APPLEWATCH2 = "Watch Series 2";
+    String APPLEWATCH3 = "Watch Series 3";
+
 
     //URLS
     String APPLEURL = "https://cdn3.iconfinder.com/data/icons/picons-social/57/16-apple-512.png";
     String DELLURL = "https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Dell_alt.png";
-    String WINDOWSURL = "https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Windows-512.png";
+    String MICROSOFTURL = "https://cdn3.iconfinder.com/data/icons/flat-icons-web/40/Windows-512.png";
     String ASUSURL = "https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/Asus.png";
     String HPURL = "https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/HP.png";
     String GOOGLEURL = "https://cdn0.iconfinder.com/data/icons/social-network-7/50/2-512.png";

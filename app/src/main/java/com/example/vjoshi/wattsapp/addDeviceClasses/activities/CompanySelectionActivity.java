@@ -76,17 +76,12 @@ public class CompanySelectionActivity extends AppCompatActivity {
         mImageUrls.add(DELLURL);
         mNames.add(DELL);
 
-        mImageUrls.add(WINDOWSURL);
-        mNames.add(WINDOWS);
-
         mImageUrls.add(ASUSURL);
         mNames.add(ASUS);
 
         mImageUrls.add(HPURL);
         mNames.add(HP);
 
-        mImageUrls.add(GOOGLEURL);
-        mNames.add(GOOGLE);
 
         initRecyclerView();
     }
@@ -97,9 +92,6 @@ public class CompanySelectionActivity extends AppCompatActivity {
 
         mImageUrls.add(DELLURL);
         mNames.add(DELL);
-
-        mImageUrls.add(WINDOWSURL);
-        mNames.add(WINDOWS);
 
         mImageUrls.add(ASUSURL);
         mNames.add(ASUS);
@@ -115,14 +107,8 @@ public class CompanySelectionActivity extends AppCompatActivity {
         mImageUrls.add(APPLEURL);
         mNames.add(APPLE);
 
-        mImageUrls.add(WINDOWSURL);
-        mNames.add(WINDOWS);
-
-        mImageUrls.add(NOKIAURL);
-        mNames.add(NOKIA);
-
-        mImageUrls.add(HUAWEIURL);
-        mNames.add(HUAWEI);
+        mImageUrls.add(MICROSOFTURL);
+        mNames.add(MICROSOFT);
 
         mImageUrls.add(SAMSUNGURL);
         mNames.add(SAMSUNG);
@@ -138,8 +124,8 @@ public class CompanySelectionActivity extends AppCompatActivity {
         mImageUrls.add(APPLEURL);
         mNames.add(APPLE);
 
-        mImageUrls.add(WINDOWSURL);
-        mNames.add(WINDOWS);
+        mImageUrls.add(MICROSOFTURL);
+        mNames.add(MICROSOFT);
 
         mImageUrls.add(SAMSUNGURL);
         mNames.add(SAMSUNG);
@@ -170,7 +156,7 @@ public class CompanySelectionActivity extends AppCompatActivity {
         mImageUrls.add(SONYURL);
         mNames.add(SONY);
 
-        mImageUrls.add(VIZIO);
+        mImageUrls.add(VIZIOURL);
         mNames.add(VIZIO);
 
         initRecyclerView();
@@ -178,7 +164,7 @@ public class CompanySelectionActivity extends AppCompatActivity {
     }
     private void initWatchImageBitMaps(){
 
-        mImageUrls.add(FITBIT);
+        mImageUrls.add(FITBITURL);
         mNames.add(FITBIT);
 
         mImageUrls.add(SAMSUNGURL);
