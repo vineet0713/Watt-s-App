@@ -98,6 +98,10 @@ public class UsageHistory extends Fragment {
         barChart.setDragXEnabled(true);
         barChart.setDragYEnabled(true);
 
+
+        barChart.getDescription().setEnabled(false);
+        barChart.getLegend().setEnabled(false);
+
         dates = new ArrayList<>();
         watts = new ArrayList<>();
 
