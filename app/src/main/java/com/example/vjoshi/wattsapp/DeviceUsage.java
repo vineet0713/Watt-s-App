@@ -113,6 +113,9 @@ public class DeviceUsage extends Fragment {
 
         piechart.setHoleRadius(0f);
 
+        piechart.getDescription().setEnabled(false);
+        piechart.getLegend().setEnabled(false);
+
         devices = new ArrayList<>();
         watts = new ArrayList<>();
         loadData();

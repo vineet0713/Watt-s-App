@@ -97,6 +97,9 @@ public class DeviceTypeUsage extends Fragment {
         piechart.setCenterTextSize(10);
         piechart.setHoleRadius(0f);
 
+        piechart.getDescription().setEnabled(false);
+        piechart.getLegend().setEnabled(false);
+
         devices = new ArrayList<>();
         watts = new ArrayList<>();
 

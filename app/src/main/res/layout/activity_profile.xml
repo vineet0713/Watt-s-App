@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Logout"
         android:id="@+id/logoutButton"
-        android:background="@drawable/button_bg"/>
+        android:background="@drawable/button_bg_logout"/>
 
     <fragment
         android:id="@+id/fragmentTop"
