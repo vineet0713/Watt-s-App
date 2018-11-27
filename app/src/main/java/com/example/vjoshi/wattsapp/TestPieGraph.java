@@ -36,9 +36,6 @@ public class TestPieGraph extends AppCompatActivity{
     private ArrayList<String> devices;
     private ArrayList<Float> watts;
 
-    // stores the abbreviated days {"", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
-    private static final String[] DAYS = (new DateFormatSymbols(new Locale("en"))).getShortWeekdays();
-
     PieChart piechart;
 
     @Override
@@ -72,7 +69,6 @@ public class TestPieGraph extends AppCompatActivity{
         super.onResume();
 
         loadData();
-        loadTimeData();
     }
 
     private void loadData() {
@@ -104,65 +100,6 @@ public class TestPieGraph extends AppCompatActivity{
                 // updates the pie chart with data
                 addDataSet();
 
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
-    }
-
-    private void loadTimeData() {
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        final String username = Backend.getInstance().getUsername();
-        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                ArrayList<UsageEntry> entries = user.getUsageEntries();
-
-                ArrayList<String> dates = new ArrayList<>();
-                ArrayList<Float> watts = new ArrayList<>();
-
-                Calendar calendar = Calendar.getInstance();
-
-                int entryIndex = entries.size() - 1;
-                calendar.setTime(entries.get(entryIndex).getUsageDate());
-                int previousDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
-                int currentDayIndex = -1;
-                float wattsOnCurrentDay = 0;
-
-                while (entryIndex >= 0 && dates.size() <= 7) {
-                    calendar.setTime(entries.get(entryIndex).getUsageDate());
-                    currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
-                    if (previousDayIndex != currentDayIndex) {
-                        // this is a new day!
-                        watts.add(wattsOnCurrentDay);
-                        wattsOnCurrentDay = 0;
-
-                        dates.add(DAYS[previousDayIndex]);
-
-                        // fill in the gap between days if it exists
-                        while (dates.size() <= 7 && previousDayIndex - 1 != currentDayIndex) {
-                            previousDayIndex--;
-                            if (previousDayIndex == 0) {
-                                previousDayIndex = 8;
-                                continue;
-                            }
-                            dates.add(DAYS[previousDayIndex]);
-                            watts.add(new Float(0));
-                        }
-
-                        previousDayIndex = currentDayIndex;
-                    }
-
-                    wattsOnCurrentDay += entries.get(entryIndex).getWattsUsed();
-                    entryIndex--;
-                }
-
-                dates.add(DAYS[currentDayIndex]);
-                watts.add(wattsOnCurrentDay);
-
-                Log.d(TAG, "dates: " + dates.toString());
-                Log.d(TAG, "watts: " + watts.toString());
             }
             @Override
             public void onCancelled(DatabaseError databaseError) { }
