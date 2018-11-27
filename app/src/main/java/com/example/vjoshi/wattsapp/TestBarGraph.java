@@ -42,6 +42,7 @@ public class TestBarGraph extends AppCompatActivity {
         barChart = (BarChart) findViewById(R.id.barChart);
         barChart.setScaleEnabled(true);
         barChart.setDragXEnabled(true);
+        barChart.setDragYEnabled(true);
 
         dates = new ArrayList<>();
         watts = new ArrayList<>();
@@ -68,8 +69,9 @@ public class TestBarGraph extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
 
-                int entryIndex = entries.size() - 1;
-                calendar.setTime(entries.get(entryIndex).getUsageDate());
+//                int entryIndex = entries.size() - 1;
+//                calendar.setTime(entries.get(entryIndex).getUsageDate());
+                calendar.setTime(entries.get(0).getUsageDate());
                 int previousDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
                 int currentDayIndex = -1;
                 float wattsOnCurrentDay = 0;
@@ -77,8 +79,8 @@ public class TestBarGraph extends AppCompatActivity {
                 watts.clear();
                 dates.clear();
 
-                while (entryIndex >= 0) {
-                    calendar.setTime(entries.get(entryIndex).getUsageDate());
+                for (UsageEntry entry : entries) {
+                    calendar.setTime(entry.getUsageDate());
                     currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
                     if (previousDayIndex != currentDayIndex) {
                         // this is a new day!
@@ -88,10 +90,10 @@ public class TestBarGraph extends AppCompatActivity {
                         dates.add(DAYS[previousDayIndex]);
 
                         // fill in the gap between days if it exists
-                        while (previousDayIndex - 1 != currentDayIndex) {
-                            previousDayIndex--;
-                            if (previousDayIndex == 0) {
-                                previousDayIndex = 8;
+                        while (previousDayIndex + 1 != currentDayIndex) {
+                            previousDayIndex++;
+                            if (previousDayIndex == 8) {
+                                previousDayIndex = 0;
                                 continue;
                             }
                             dates.add(DAYS[previousDayIndex]);
@@ -101,8 +103,7 @@ public class TestBarGraph extends AppCompatActivity {
                         previousDayIndex = currentDayIndex;
                     }
 
-                    wattsOnCurrentDay += entries.get(entryIndex).getWattsUsed();
-                    entryIndex--;
+                    wattsOnCurrentDay += entry.getWattsUsed();
                 }
 
                 dates.add(DAYS[currentDayIndex]);
