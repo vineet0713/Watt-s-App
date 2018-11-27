@@ -110,6 +110,7 @@ public class DeviceUsage extends Fragment {
         piechart.setTransparentCircleAlpha(0);
         piechart.setCenterText("Super Cool Chart");
         piechart.setCenterTextSize(10);
+
         piechart.setHoleRadius(0f);
 
         devices = new ArrayList<>();

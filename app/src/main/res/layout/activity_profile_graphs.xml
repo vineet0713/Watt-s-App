@@ -10,21 +10,24 @@
     android:background="@drawable/login_bg"
 >
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:id="@+id/logoutButton"
+        android:background="@drawable/button_bg"/>
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tablayout"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/button_bg"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
     </android.support.design.widget.TabLayout>
-
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/pager">
-
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>
