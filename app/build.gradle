@@ -46,6 +46,9 @@ dependencies {
 
     //Required for Charts on the profile page
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+
+    //SwipeBack functionality
+    implementation 'com.hannesdorfmann:swipeback:1.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
