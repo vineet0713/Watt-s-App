@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,8 @@ public class SignInActivity extends AppCompatActivity {
 
     private EditText emailField, passwordField;
     private Button signinButton, joinButton;
+
+    private ProgressBar loadingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,9 @@ public class SignInActivity extends AppCompatActivity {
                 joinPressed();
             }
         });
+
+        loadingBar = findViewById(R.id.progressBar);
+        loadingBar.setVisibility(ProgressBar.INVISIBLE);
     }
 
     @Override
@@ -88,10 +94,9 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signinPressed() {
-
         hideKeyboard();
 
-        Log.d(TAG, "signinPressed");
+        loadingBar.setVisibility(ProgressBar.VISIBLE);
 
         final String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
@@ -109,7 +114,9 @@ public class SignInActivity extends AppCompatActivity {
                     Log.d(TAG, "sign in failed: " + task.getException());
                     displayAlert("Sign In Failed", task.getException().getMessage(), false);
                 }
+
                 clearTextFields();
+                loadingBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
@@ -135,6 +142,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void joinPressed() {
         hideKeyboard();
+        loadingBar.setVisibility(ProgressBar.VISIBLE);
 
         Log.d(TAG, "joinPressed");
 
@@ -167,7 +175,9 @@ public class SignInActivity extends AppCompatActivity {
                     Log.d(TAG, "create user failed: " + task.getException());
                     displayAlert("Create User Failed", task.getException().getMessage(), false);
                 }
+
                 clearTextFields();
+                loadingBar.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
