@@ -41,6 +41,7 @@ public class TestBarGraph extends AppCompatActivity {
 
         barChart = (BarChart) findViewById(R.id.barChart);
         barChart.setScaleEnabled(true);
+        barChart.setDragXEnabled(true);
 
         dates = new ArrayList<>();
         watts = new ArrayList<>();
@@ -76,7 +77,7 @@ public class TestBarGraph extends AppCompatActivity {
                 watts.clear();
                 dates.clear();
 
-                while (entryIndex >= 0 && dates.size() < 7) {
+                while (entryIndex >= 0) {
                     calendar.setTime(entries.get(entryIndex).getUsageDate());
                     currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
                     if (previousDayIndex != currentDayIndex) {
@@ -87,7 +88,7 @@ public class TestBarGraph extends AppCompatActivity {
                         dates.add(DAYS[previousDayIndex]);
 
                         // fill in the gap between days if it exists
-                        while (dates.size() < 7 && previousDayIndex - 1 != currentDayIndex) {
+                        while (previousDayIndex - 1 != currentDayIndex) {
                             previousDayIndex--;
                             if (previousDayIndex == 0) {
                                 previousDayIndex = 8;
@@ -104,10 +105,8 @@ public class TestBarGraph extends AppCompatActivity {
                     entryIndex--;
                 }
 
-                if (dates.size() < 7) {
-                    dates.add(DAYS[currentDayIndex]);
-                    watts.add(wattsOnCurrentDay);
-                }
+                dates.add(DAYS[currentDayIndex]);
+                watts.add(wattsOnCurrentDay);
 
                 barChart.invalidate();
                 // updates the bar graph with data
