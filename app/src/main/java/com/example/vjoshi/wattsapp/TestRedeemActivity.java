@@ -18,7 +18,7 @@ public class TestRedeemActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_redeem);
+        //setContentView(R.layout.activity_redeem);
 
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_redeem)

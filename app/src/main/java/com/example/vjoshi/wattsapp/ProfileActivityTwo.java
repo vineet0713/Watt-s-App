@@ -3,9 +3,12 @@ package com.example.vjoshi.wattsapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +22,9 @@ import com.hannesdorfmann.swipeback.SwipeBack;
 
 
 public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage.OnFragmentInteractionListener,DeviceTypeUsage.OnFragmentInteractionListener,UsageHistory.OnFragmentInteractionListener {
+    private ViewPager mViewPager;
+    private int mPagerPosition;
+    private int mPagerOffsetPixels;
 
     @Override
     public void onBackPressed(){
@@ -30,7 +36,11 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_graphs);
+        //setContentView(R.layout.activity_profile_graphs);
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_profile_graphs)
+                .setSwipeBackView(R.layout.swipeback_default);
+
 
         Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +72,10 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        SwipeBack.attach(this, Position.LEFT)
-                .setContentView(R.layout.activity_profile_graphs)
-                .setSwipeBackView(R.layout.swipeback_default);
+
+
+
+
 //        LinearLayout rootLayout = findViewById(R.id.profileRootLayout);
 //        rootLayout.setOnTouchListener(new OnSwipeTouchListener(ProfileActivityTwo.this) {
 //            public void onSwipeRight() {
