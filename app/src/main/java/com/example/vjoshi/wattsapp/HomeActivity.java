@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -49,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ArrayList<Button> deviceButtons = new ArrayList<>();
 
+    private static RelativeLayout rootLayout = null;
     private static GridLayout gridLayout = null;
     private static Context context = null;
 
@@ -101,6 +103,7 @@ public class HomeActivity extends AppCompatActivity {
         final ImageButton leaderboardButton = findViewById(R.id.leaderboardButton);
         final Button addDeviceButton = findViewById(R.id.itemButton);
 
+        rootLayout = findViewById(R.id.rootLayout);
         gridLayout = findViewById(R.id.gridLayout);
         context = this;
 
@@ -127,6 +130,24 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         loadDevices();
+
+        rootLayout.setOnTouchListener(new OnSwipeTouchListener(HomeActivity.this) {
+            public void onSwipeTop() {
+                Toast.makeText(HomeActivity.this, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                Toast.makeText(HomeActivity.this, "Right", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeLeft() {
+                Toast.makeText(HomeActivity.this, "left", Toast.LENGTH_SHORT).show();
+                startActivity(profileIntent);
+                //finish();
+            }
+            public void onSwipeBottom() {
+                Toast.makeText(HomeActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 
     private void loadDevices() {
