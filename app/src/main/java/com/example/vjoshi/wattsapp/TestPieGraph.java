@@ -16,11 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class TestPieGraph extends AppCompatActivity{
     private static String TAG = "TestPieGraph";
@@ -30,8 +27,8 @@ public class TestPieGraph extends AppCompatActivity{
 
 
     // this is for testing purposes (to switch between grouping by devices, and grouping by device type)
-    private static final String PIE_CHART_TYPE = "DEVICES";
-//    private static final String PIE_CHART_TYPE = "DEVICE_TYPES";
+//    private static final String PIE_CHART_TYPE = "DEVICES";
+    private static final String PIE_CHART_TYPE = "DEVICE_TYPES";
 
     private ArrayList<String> devices;
     private ArrayList<Float> watts;
