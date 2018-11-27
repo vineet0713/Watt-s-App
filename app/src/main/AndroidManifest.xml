@@ -28,6 +28,7 @@
         <activity android:name=".SignInActivity"></activity>
         <activity android:name=".TestPieGraph"></activity>
         <activity android:name=".TestBarGraph"></activity>
+        <activity android:name=".ProfileActivityTwo"></activity>
     </application>
 
 </manifest>
