@@ -10,5 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Device Type Usage" />
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/PieChart">
+
+    </com.github.mikephil.charting.charts.PieChart>
 
 </FrameLayout>

@@ -8,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mikephil.charting.charts.BarChart;
+
+import java.text.DateFormatSymbols;
+import java.util.ArrayList;
+import java.util.Locale;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +24,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class UsageHistory extends Fragment {
+    private static String TAG = "TestBarGraph";
+
+    // stores the abbreviated days {"", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
+    private static final String[] DAYS = (new DateFormatSymbols(new Locale("en"))).getShortWeekdays();
+
+    private ArrayList<String> dates;
+    private ArrayList<Float> watts;
+
+    BarChart barChart;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
