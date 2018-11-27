@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private User user;
 
-    ProgressBar loadingBar;
+    private ProgressBar loadingBar;
 
     public static String getDevice() {
         return device;
