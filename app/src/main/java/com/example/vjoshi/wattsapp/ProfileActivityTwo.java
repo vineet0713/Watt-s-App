@@ -3,28 +3,35 @@ package com.example.vjoshi.wattsapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.vjoshi.wattsapp.profile.ProfileActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hannesdorfmann.swipeback.Position;
 import com.hannesdorfmann.swipeback.SwipeBack;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage.OnFragmentInteractionListener,DeviceTypeUsage.OnFragmentInteractionListener,UsageHistory.OnFragmentInteractionListener {
     private ViewPager mViewPager;
     private int mPagerPosition;
     private int mPagerOffsetPixels;
+
+    private Button logoutButton;
+    private TextView pointsField, todaysUsageField;
 
     @Override
     public void onBackPressed(){
@@ -41,14 +48,13 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
                 .setContentView(R.layout.activity_profile_graphs)
                 .setSwipeBackView(R.layout.swipeback_default);
 
-
-        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivityTwo.this);
                 builder.setTitle("Confirm Logout");
-                builder.setMessage("Are you sure you want to logout?");
+                builder.setMessage("Are you sure you want to logout '" + Backend.getInstance().getUsername() + "'?");
                 builder.setNegativeButton("No", null);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -58,6 +64,52 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
                 });
 
                 builder.show();
+            }
+        });
+
+        pointsField = findViewById(R.id.pointsView);
+        todaysUsageField = findViewById(R.id.usageView);
+
+        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        final String username = Backend.getInstance().getUsername();
+        database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                pointsField.setText("Points: " + user.getTotalPoints());
+
+                ArrayList<UsageEntry> entries = user.getUsageEntries();
+
+                float todaysWatts = 0;
+                if (entries.size() > 0) {
+                    Calendar calendar = Calendar.getInstance();
+                    // sets the calendar to the current time
+                    calendar.setTime(new Date(System.currentTimeMillis()));
+                    int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    int entryIndex = entries.size() - 1;
+
+                    calendar.setTime(entries.get(entryIndex).getUsageDate());
+                    int currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    while (currentDayIndex == todayIndex) {
+                        todaysWatts += entries.get(entryIndex).getWattsUsed();
+                        entryIndex--;
+                        if (entryIndex < 0) {
+                            break;
+                        }
+
+                        calendar.setTime(entries.get(entryIndex).getUsageDate());
+                        currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+                    }
+                }
+
+                todaysUsageField.setText("Today's Usage: " + todaysWatts + " Watts");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 
@@ -72,18 +124,6 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-
-
-
-
-//        LinearLayout rootLayout = findViewById(R.id.profileRootLayout);
-//        rootLayout.setOnTouchListener(new OnSwipeTouchListener(ProfileActivityTwo.this) {
-//            public void onSwipeRight() {
-//                Toast.makeText(ProfileActivityTwo.this, "Right", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//
-//        });
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

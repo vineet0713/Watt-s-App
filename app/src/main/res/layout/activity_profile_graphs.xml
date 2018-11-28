@@ -26,16 +26,17 @@
             android:layout_columnWeight="1"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Username"
-            android:layout_columnWeight="1"
-            />
-
-        <TextView
+            android:id="@+id/pointsView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Points"
+            android:layout_columnWeight="1"/>
+
+        <TextView
+            android:id="@+id/usageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's Usage"
             android:layout_columnWeight="1"/>
 
     </GridLayout>

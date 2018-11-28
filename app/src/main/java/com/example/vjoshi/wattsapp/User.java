@@ -74,6 +74,9 @@ public class User {
     public double getTotalWatts() { return totalWatts; }
 
     @Exclude
+    public double getTotalPoints() { return totalPoints; }
+
+    @Exclude
     public void addRedeemableItem(RedeemableItem ri) {
         if (itemsRedeemed == null) {
             itemsRedeemed = new ArrayList<>();
