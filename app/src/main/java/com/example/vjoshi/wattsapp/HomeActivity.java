@@ -138,23 +138,6 @@ public class HomeActivity extends AppCompatActivity {
 
         loadDevices();
 
-        rootLayout.setOnTouchListener(new OnSwipeTouchListener(HomeActivity.this) {
-            public void onSwipeTop() {
-                Toast.makeText(HomeActivity.this, "top", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeRight() {
-                Toast.makeText(HomeActivity.this, "Right", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeLeft() {
-                Toast.makeText(HomeActivity.this, "left", Toast.LENGTH_SHORT).show();
-                startActivity(profileIntent);
-                //finish();
-            }
-            public void onSwipeBottom() {
-                Toast.makeText(HomeActivity.this, "bottom", Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
     private void loadDevices() {

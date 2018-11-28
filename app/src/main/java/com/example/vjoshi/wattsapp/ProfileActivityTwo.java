@@ -21,7 +21,7 @@ import com.hannesdorfmann.swipeback.Position;
 import com.hannesdorfmann.swipeback.SwipeBack;
 
 
-public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage.OnFragmentInteractionListener,DeviceTypeUsage.OnFragmentInteractionListener,UsageHistory.OnFragmentInteractionListener {
+public class ProfileActivityTwo extends FragmentActivity implements DeviceUsage.OnFragmentInteractionListener,DeviceTypeUsage.OnFragmentInteractionListener,UsageHistory.OnFragmentInteractionListener {
     private ViewPager mViewPager;
     private int mPagerPosition;
     private int mPagerOffsetPixels;
@@ -40,6 +40,7 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_profile_graphs)
                 .setSwipeBackView(R.layout.swipeback_default);
+
 
 
         Button logoutButton = findViewById(R.id.logoutButton);
@@ -72,18 +73,6 @@ public class ProfileActivityTwo extends AppCompatActivity implements DeviceUsage
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-
-
-
-
-//        LinearLayout rootLayout = findViewById(R.id.profileRootLayout);
-//        rootLayout.setOnTouchListener(new OnSwipeTouchListener(ProfileActivityTwo.this) {
-//            public void onSwipeRight() {
-//                Toast.makeText(ProfileActivityTwo.this, "Right", Toast.LENGTH_SHORT).show();
-//                finish();
-//            }
-//
-//        });
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
