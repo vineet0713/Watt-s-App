@@ -87,6 +87,12 @@ public class User {
     public void addTotalPoints(long pointsToAdd) { totalPoints += pointsToAdd; }
 
     @Exclude
+    public void subtractTotalPoints(long pointsToSubtract) { totalPoints -= pointsToSubtract; }
+
+    @Exclude
+    public boolean canRedeemItem(long itemPoints) { return (totalPoints - itemPoints >= 0); }
+
+    @Exclude
     public double getDailyWatts() { return dailyWatts; }
 
     @Exclude
