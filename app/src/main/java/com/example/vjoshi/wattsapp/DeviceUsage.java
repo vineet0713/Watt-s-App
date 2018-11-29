@@ -118,7 +118,10 @@ public class DeviceUsage extends Fragment {
 
         devices = new ArrayList<>();
         watts = new ArrayList<>();
+
+
         loadData();
+
 //        addDataSet();
         Log.d(TAG, "addDataSet started");
         String noDataMessage = "Sorry there is no data to display at this time.";
