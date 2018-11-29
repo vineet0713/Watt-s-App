@@ -24,6 +24,7 @@ public class TestRedeemActivity extends AppCompatActivity{
     AlertDialog dealDialog;
 
     final CharSequence[] targetItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final int[] targetCosts = {200,200,200,200,200};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +38,27 @@ public class TestRedeemActivity extends AppCompatActivity{
     public void showPopUp(View view){
         String title = "Target";
         String message = "Would you like to redeem your points to get discounts at target?";
-        showDialog(title,message,targetItems);
+        showDialog(title,message,targetItems, targetCosts);
     }
-    public void showDialog(String title, String Message, final CharSequence[] itemList){
+    public void showDialog(String title, String Message, final CharSequence[] itemList, final int[] costsLists ){
+        final CharSequence[] displayList = new CharSequence[costsLists.length];
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setCancelable(true);
         builder.setTitle(title);
         //builder.setMessage(Message);
-        builder.setSingleChoiceItems(itemList, -1, new DialogInterface.OnClickListener() {
+
+        for(int i = 0 ; i < costsLists.length; i++)
+        {
+            displayList[i] = Integer.toString(costsLists[i]) +" pts - "+ itemList[i];
+        }
+        builder.setSingleChoiceItems(displayList, -1, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int targetItems ) {
 
 
                 switch(targetItems)
                 {
                     case 0:
-                        confirmationDialog(itemList,0);
+                        confirmationDialog(itemList,costsLists,0);
                         break;
                     case 1:
                         // Your code when 2nd  option seletced
@@ -90,12 +97,12 @@ public class TestRedeemActivity extends AppCompatActivity{
 
     }
 
-    private void confirmationDialog(CharSequence[] array, int item){
+    private void confirmationDialog(CharSequence[] array,int[] costArray, int i){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         int pointsCost = 200;
         builder.setCancelable(true);
         builder.setTitle("Confirmation");
-        builder.setMessage("Are you sure you want to redeem " + pointsCost + " points for a " +array[item]+ "?");
+        builder.setMessage("Are you sure you want to redeem " + costArray[i] + " points for a " +array[i]+ "?");
 
         builder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 
