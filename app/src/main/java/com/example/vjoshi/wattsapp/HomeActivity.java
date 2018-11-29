@@ -51,6 +51,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private DatabaseReference database;
 
+    private ValueEventListener topRankHolderChanged;
+    private boolean firstChange;
+
     private ArrayList<Button> deviceButtons = new ArrayList<>();
 
     private static RelativeLayout rootLayout = null;
@@ -102,6 +105,21 @@ public class HomeActivity extends AppCompatActivity {
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
 
+        topRankHolderChanged = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (firstChange == false) {
+                    String newTopRankHolder = (String) dataSnapshot.getValue();
+                    String username = Backend.getInstance().getUsername();
+                    String message = "The new top rankholder is '" + newTopRankHolder + "'! You better up your game, " + username + "!";
+                    displayAlert("New Top Rankholder!", message);
+                }
+                firstChange = false;
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        };
+
         final Intent profileIntent = new Intent(this, ProfileActivityTwo.class);
         final Intent redeemIntent = new Intent(this, TestRedeemActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
@@ -147,6 +165,21 @@ public class HomeActivity extends AppCompatActivity {
 
         loadDevices();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        firstChange = true;
+        database.child("topRankHolder").addValueEventListener(topRankHolderChanged);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        database.child("topRankHolder").removeEventListener(topRankHolderChanged);
     }
 
     private void loadDevices() {
@@ -335,6 +368,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
+    }
+
+    private void displayAlert(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("Ok", null);
+        builder.show();
     }
 
 }

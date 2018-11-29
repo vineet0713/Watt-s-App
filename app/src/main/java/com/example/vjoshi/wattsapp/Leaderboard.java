@@ -51,6 +51,11 @@ public class Leaderboard extends AppCompatActivity {
                 userList);
 
         lv.setAdapter(arrayAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         loadLeaderboard();
     }
@@ -62,11 +67,24 @@ public class Leaderboard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Pair> pairs = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    User user = snapshot.getValue(User.class);
-                    pairs.add(new Pair(user.getUsername(), user.getDailyPoints()));
+                    // this avoids casting the topRankHolder child to a User
+                    try {
+                        User user = snapshot.getValue(User.class);
+                        pairs.add(new Pair(user.getUsername(), user.getDailyPoints()));
+                    } catch (Exception e) {
+                        continue;
+                    }
                 }
 
                 Collections.sort(pairs);
+                String currentTopRankHolder = (String) dataSnapshot.child("topRankHolder").getValue();
+                if (pairs.size() > 0) {
+                    // check if the top rankholder has changed
+                    String newTopRankHolder = pairs.get(0).username;
+                    if (newTopRankHolder.equals(currentTopRankHolder) == false) {
+                        database.child("topRankHolder").setValue(newTopRankHolder);
+                    }
+                }
 
                 userList.clear();
                 final String myUsername = Backend.getInstance().getUsername();
