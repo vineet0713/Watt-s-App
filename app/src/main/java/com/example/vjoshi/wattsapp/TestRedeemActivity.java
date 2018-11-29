@@ -24,7 +24,7 @@ public class TestRedeemActivity extends AppCompatActivity{
     AlertDialog dealDialog;
 
     final CharSequence[] targetItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final int[] targetCosts = {200,200,200,200,200};
+    final int[] targetCosts = {200,200,4000,100000,100000};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,6 @@ public class TestRedeemActivity extends AppCompatActivity{
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setCancelable(true);
         builder.setTitle(title);
-        //builder.setMessage(Message);
-
         for(int i = 0 ; i < costsLists.length; i++)
         {
             displayList[i] = Integer.toString(costsLists[i]) +" pts - "+ itemList[i];
@@ -61,40 +59,24 @@ public class TestRedeemActivity extends AppCompatActivity{
                         confirmationDialog(itemList,costsLists,0);
                         break;
                     case 1:
-                        // Your code when 2nd  option seletced
-
+                        confirmationDialog(itemList,costsLists,1);
                         break;
                     case 2:
-                        // Your code when 3rd option seletced
+                        confirmationDialog(itemList,costsLists,2);
                         break;
                     case 3:
-                        // Your code when 4th  option seletced
+                        confirmationDialog(itemList,costsLists,3);
                         break;
                     case 4:
-                        // Your code when 4th  option seletced
+                        confirmationDialog(itemList,costsLists,4);
                         break;
 
                 }
                 dealDialog.dismiss();
             }
         });
-
-
-//        builder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {}
-//        });
-//        builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-//
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {}
-//        });
         dealDialog = builder.create();
         dealDialog.show();
-        //builder.show();
-
-
     }
 
     private void confirmationDialog(CharSequence[] array,int[] costArray, int i){
@@ -116,10 +98,5 @@ public class TestRedeemActivity extends AppCompatActivity{
         });
 
         builder.show();
-
-
-
-
     }
-
 }
