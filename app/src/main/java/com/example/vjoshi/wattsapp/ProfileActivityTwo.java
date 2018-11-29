@@ -105,7 +105,26 @@ public class ProfileActivityTwo extends FragmentActivity implements DeviceUsage.
 //                    }
 //                }
 
-                todaysUsageField.setText("Today's Usage: " + user.getDailyWatts() + " Watts");
+                Calendar calendar = Calendar.getInstance();
+                ArrayList<UsageEntry> entries = user.getUsageEntries();
+                double todayUsage = 0.0;
+
+                if (entries.size() > 0) {
+                    // sets the calendar to the current time
+                    calendar.setTime(new Date(System.currentTimeMillis()));
+                    int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    // sets the calendar to the time of the last added UsageEntry
+                    calendar.setTime(entries.get(entries.size() - 1).getUsageDate());
+                    int lastAddedEntryIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                    // if it's the same day, then set usage to the daily usage value
+                    if (todayIndex == lastAddedEntryIndex) {
+                        todayUsage = user.getDailyWatts();
+                    }
+                }
+
+                todaysUsageField.setText("Today's Usage: " + todayUsage + " Watts");
             }
 
             @Override
