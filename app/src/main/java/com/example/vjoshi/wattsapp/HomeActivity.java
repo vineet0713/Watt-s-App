@@ -25,6 +25,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants;
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
 import com.example.vjoshi.wattsapp.profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
@@ -246,17 +248,59 @@ public class HomeActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
                 Device device = user.getDevices().get(indexToUpdate);
                 String status = device.getStatus();
+
+                long currentTimeMillis = System.currentTimeMillis();
+//                long currentTimeMillis = System.currentTimeMillis() + 86400000;
                 if (status.equals("OFF")) {
                     // turn the device on, so set the start time (epoch time in milliseconds)
-                    device.setStartTime(System.currentTimeMillis());
+                    device.setStartTime(currentTimeMillis);
                 } else if (status.equals("ON")) {
+                    ArrayList<UsageEntry> entries = user.getUsageEntries();
+                    if (entries.size() > 0) {
+                        Calendar calendar = Calendar.getInstance();
+
+                        // sets the calendar to the current time
+                        calendar.setTime(new Date(currentTimeMillis));
+                        int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                        // sets the calendar to the time of the last added UsageEntry
+                        calendar.setTime(entries.get(entries.size() - 1).getUsageDate());
+                        int lastAddedEntryIndex = calendar.get(Calendar.DAY_OF_WEEK);
+
+                        if (lastAddedEntryIndex != todayIndex) {
+                            // it is a new day, so we have to:
+                            // 1. add previous day's points to the total points
+                            // 2. reset the daily points and daily usage
+                            user.addTotalPoints(user.getDailyPoints());
+                            user.resetDailyPoints();
+                            user.resetDailyWatts();
+                        }
+                    }
+
                     // turn the device off, so save the UsageEntry
-                    long timePeriod = (System.currentTimeMillis() - device.getStartTime()) / 1000;
+                    long timePeriod = (currentTimeMillis - device.getStartTime()) / 1000;
                     double wattsUsed = device.getUsageRate() * timePeriod;
                     Date usageDate = new Date(device.getStartTime());
                     UsageEntry entry = new UsageEntry(device.getType(), device.getDeviceName(), usageDate, wattsUsed);
                     user.addUsageEntry(entry);
+
+                    // add usage and points to the daily totals
+                    user.addDailyWatts(wattsUsed);
+
+                    // calculate the user's new daily points total
+                    long threshold = DeviceConstants.USAGE_THRESHOLD;
+                    long step = DeviceConstants.USAGE_STEP;
+                    long dailyPointsCalcul = 0;
+                    double dailyWatts = user.getDailyWatts();
+                    if (dailyWatts % step != 0) {
+                        // this rounds up the dailyWatts to the nearest thousand
+                        dailyWatts += (step - (dailyWatts % step));
+                    }
+                    // calculates the new daily points value based daily usage
+                    long newPoints = (dailyWatts >= threshold) ? 0 : ((long)(threshold - dailyWatts) / step);
+                    user.setDailyPoints(newPoints);
                 }
+
                 final String newStatus = (status.equals("OFF")) ? "ON" : "OFF";
                 device.setStatus(newStatus);
 

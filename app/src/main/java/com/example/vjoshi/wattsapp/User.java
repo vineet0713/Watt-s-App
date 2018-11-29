@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class User {
     // username should be the key to a User object in Firebase
     public String username;
-    public long totalPoints;
-    public double totalWatts;
+
+    public long dailyPoints, totalPoints;
+    public double dailyWatts;
 
     public ArrayList<Device> devices;
     public ArrayList<UsageEntry> usageEntries;
@@ -20,10 +21,10 @@ public class User {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, long totalPoints) {
+    public User(String username) {
         this.username = username;
-        this.totalPoints = totalPoints;
-        totalWatts = 0.0;
+        dailyPoints = totalPoints = 0;
+        dailyWatts = 0.0;
     }
 
     @Exclude
@@ -55,11 +56,11 @@ public class User {
         if (usageEntries == null) {
             usageEntries = new ArrayList<>();
         }
-        if (usageEntries == null || usageEntries.size() == 0) {
-            totalWatts = 0.0;
-        }
+//        if (usageEntries == null || usageEntries.size() == 0) {
+//            totalWatts = 0.0;
+//        }
         usageEntries.add(ue);
-        totalWatts += ue.wattsUsed;
+//        totalWatts += ue.wattsUsed;
     }
 
     @Exclude
@@ -71,10 +72,28 @@ public class User {
     }
 
     @Exclude
-    public double getTotalWatts() { return totalWatts; }
+    public long getDailyPoints() { return dailyPoints; }
 
     @Exclude
-    public double getTotalPoints() { return totalPoints; }
+    public void resetDailyPoints() { dailyPoints = 0; }
+
+    @Exclude
+    public void setDailyPoints(long dailyPoints) { this.dailyPoints = dailyPoints; }
+
+    @Exclude
+    public long getTotalPoints() { return totalPoints; }
+
+    @Exclude
+    public void addTotalPoints(long pointsToAdd) { totalPoints += pointsToAdd; }
+
+    @Exclude
+    public double getDailyWatts() { return dailyWatts; }
+
+    @Exclude
+    public void resetDailyWatts() { dailyWatts = 0; }
+
+    @Exclude
+    public void addDailyWatts(double wattsToAdd) { dailyWatts += wattsToAdd; }
 
     @Exclude
     public void addRedeemableItem(RedeemableItem ri) {

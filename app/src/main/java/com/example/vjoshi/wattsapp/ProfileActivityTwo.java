@@ -79,33 +79,33 @@ public class ProfileActivityTwo extends FragmentActivity implements DeviceUsage.
                 User user = dataSnapshot.getValue(User.class);
                 pointsField.setText("Points: " + user.getTotalPoints());
 
-                ArrayList<UsageEntry> entries = user.getUsageEntries();
+//                ArrayList<UsageEntry> entries = user.getUsageEntries();
+//
+//                float todaysWatts = 0;
+//                if (entries.size() > 0) {
+//                    Calendar calendar = Calendar.getInstance();
+//                    // sets the calendar to the current time
+//                    calendar.setTime(new Date(System.currentTimeMillis()));
+//                    int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+//
+//                    int entryIndex = entries.size() - 1;
+//
+//                    calendar.setTime(entries.get(entryIndex).getUsageDate());
+//                    int currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+//
+//                    while (currentDayIndex == todayIndex) {
+//                        todaysWatts += entries.get(entryIndex).getWattsUsed();
+//                        entryIndex--;
+//                        if (entryIndex < 0) {
+//                            break;
+//                        }
+//
+//                        calendar.setTime(entries.get(entryIndex).getUsageDate());
+//                        currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+//                    }
+//                }
 
-                float todaysWatts = 0;
-                if (entries.size() > 0) {
-                    Calendar calendar = Calendar.getInstance();
-                    // sets the calendar to the current time
-                    calendar.setTime(new Date(System.currentTimeMillis()));
-                    int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
-
-                    int entryIndex = entries.size() - 1;
-
-                    calendar.setTime(entries.get(entryIndex).getUsageDate());
-                    int currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
-
-                    while (currentDayIndex == todayIndex) {
-                        todaysWatts += entries.get(entryIndex).getWattsUsed();
-                        entryIndex--;
-                        if (entryIndex < 0) {
-                            break;
-                        }
-
-                        calendar.setTime(entries.get(entryIndex).getUsageDate());
-                        currentDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
-                    }
-                }
-
-                todaysUsageField.setText("Today's Usage: " + todaysWatts + " Watts");
+                todaysUsageField.setText("Today's Usage: " + user.getDailyWatts() + " Watts");
             }
 
             @Override

@@ -1,6 +1,9 @@
 package com.example.vjoshi.wattsapp.addDeviceClasses;
 
 public interface DeviceConstants {
+    long USAGE_THRESHOLD = 50000;
+    long USAGE_STEP = 1000;
+
     String TAG = "TAG";
     String DEVICENAME = "device";
     String INDEX = "index";
