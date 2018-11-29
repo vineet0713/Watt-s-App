@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
-                    android:background="@mipmap/ic_target_background"
+                    android:background="@mipmap/ic_lego_background"
                     android:onClick="showPopUp"
                     />
 
