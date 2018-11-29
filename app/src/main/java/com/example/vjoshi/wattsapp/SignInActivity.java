@@ -162,7 +162,7 @@ public class SignInActivity extends AppCompatActivity {
 
                     // saves the user to the backend
                     Backend.getInstance().setUsername(username);
-                    User u = new User(username, 0);
+                    User u = new User(username);
                     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
                     database.child(username).setValue(u).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
