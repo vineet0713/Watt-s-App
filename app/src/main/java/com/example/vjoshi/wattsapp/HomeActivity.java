@@ -250,7 +250,7 @@ public class HomeActivity extends AppCompatActivity {
                 String status = device.getStatus();
 
                 long epochTimeMillis = System.currentTimeMillis();
-//                long currentTimeMillis = System.currentTimeMillis() + 86400000;
+//                long epochTimeMillis = System.currentTimeMillis() + 86400000;
                 if (status.equals("OFF")) {
                     // turn the device on, so set the start time (epoch time in milliseconds)
                     device.setStartTime(epochTimeMillis);
