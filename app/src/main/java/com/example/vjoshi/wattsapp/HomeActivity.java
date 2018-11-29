@@ -105,6 +105,7 @@ public class HomeActivity extends AppCompatActivity {
         final Intent profileIntent = new Intent(this, ProfileActivityTwo.class);
         final Intent redeemIntent = new Intent(this, TestRedeemActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
+        final Intent leaderIntent = new Intent(this, Leaderboard.class);
 
         final ImageButton profileButton = findViewById(R.id.profileButton);
         final ImageButton redeemButtom = findViewById(R.id.redeemButton);
@@ -135,6 +136,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(deviceIntent);
+            }
+        });
+
+        leaderboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { startActivity(leaderIntent);
             }
         });
 

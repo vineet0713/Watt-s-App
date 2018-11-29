@@ -29,6 +29,7 @@
         <activity android:name=".TestPieGraph"></activity>
         <activity android:name=".TestBarGraph"></activity>
         <activity android:name=".ProfileActivityTwo"></activity>
+        <activity android:name=".Leaderboard"></activity>
     </application>
 
 </manifest>
