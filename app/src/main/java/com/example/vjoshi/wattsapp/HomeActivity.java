@@ -249,18 +249,18 @@ public class HomeActivity extends AppCompatActivity {
                 Device device = user.getDevices().get(indexToUpdate);
                 String status = device.getStatus();
 
-                long currentTimeMillis = System.currentTimeMillis();
+                long epochTimeMillis = System.currentTimeMillis();
 //                long currentTimeMillis = System.currentTimeMillis() + 86400000;
                 if (status.equals("OFF")) {
                     // turn the device on, so set the start time (epoch time in milliseconds)
-                    device.setStartTime(currentTimeMillis);
+                    device.setStartTime(epochTimeMillis);
                 } else if (status.equals("ON")) {
                     ArrayList<UsageEntry> entries = user.getUsageEntries();
                     if (entries.size() > 0) {
                         Calendar calendar = Calendar.getInstance();
 
                         // sets the calendar to the current time
-                        calendar.setTime(new Date(currentTimeMillis));
+                        calendar.setTime(new Date(epochTimeMillis));
                         int todayIndex = calendar.get(Calendar.DAY_OF_WEEK);
 
                         // sets the calendar to the time of the last added UsageEntry
@@ -278,7 +278,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     // turn the device off, so save the UsageEntry
-                    long timePeriod = (currentTimeMillis - device.getStartTime()) / 1000;
+                    long timePeriod = (epochTimeMillis - device.getStartTime()) / 1000;
                     double wattsUsed = device.getUsageRate() * timePeriod;
                     Date usageDate = new Date(device.getStartTime());
                     UsageEntry entry = new UsageEntry(device.getType(), device.getDeviceName(), usageDate, wattsUsed);
@@ -287,17 +287,23 @@ public class HomeActivity extends AppCompatActivity {
                     // add usage and points to the daily totals
                     user.addDailyWatts(wattsUsed);
 
-                    // calculate the user's new daily points total
-                    long threshold = DeviceConstants.USAGE_THRESHOLD;
-                    long step = DeviceConstants.USAGE_STEP;
-                    long dailyPointsCalcul = 0;
+                    double threshold = DeviceConstants.USAGE_THRESHOLD;
+                    double step = DeviceConstants.USAGE_STEP;
                     double dailyWatts = user.getDailyWatts();
-                    if (dailyWatts % step != 0) {
-                        // this rounds up the dailyWatts to the nearest thousand
-                        dailyWatts += (step - (dailyWatts % step));
+
+                    // calculates the new daily points value based on daily usage
+                    long newPoints = 0;
+                    if (dailyWatts < threshold) {
+                        newPoints = (long)((threshold - dailyWatts) / step);
+                        if (dailyWatts % step != 0) {
+                            newPoints++;
+                        }
                     }
-                    // calculates the new daily points value based daily usage
-                    long newPoints = (dailyWatts >= threshold) ? 0 : ((long)(threshold - dailyWatts) / step);
+//                    if (dailyWatts > 0 && dailyWatts < step) {
+//                        newPoints = (long)((threshold - step) / step);
+//                    } else if (dailyWatts >= step && dailyWatts < threshold) {
+//
+//                    }
                     user.setDailyPoints(newPoints);
                 }
 
