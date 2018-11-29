@@ -27,6 +27,8 @@ public class User {
         dailyWatts = 0.0;
     }
 
+    public String getUsername() { return username; }
+
     @Exclude
     public void addDevice(Device d) {
         if (devices == null) {
