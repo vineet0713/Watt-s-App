@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -22,6 +23,8 @@ import java.util.List;
 public class TestRedeemActivity extends AppCompatActivity{
 
     AlertDialog dealDialog;
+    private Button redeemListButton;
+
 
     //electronics - row 1
     final CharSequence[] frysItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
@@ -69,10 +72,21 @@ public class TestRedeemActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_redeem);
-
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_redeem)
                 .setSwipeBackView(R.layout.swipeback_default);
+
+        redeemListButton = findViewById(R.id.RedeemButton);
+
+        final Intent redeemListIntent = new Intent(this, RedeemListActivity.class);
+        redeemListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(redeemListIntent);
+            }
+        });
+
+
     }
 
     public void showPopUpFrys(View view){

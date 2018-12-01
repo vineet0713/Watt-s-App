@@ -30,6 +30,7 @@
         <activity android:name=".TestBarGraph"></activity>
         <activity android:name=".ProfileActivityTwo"></activity>
         <activity android:name=".Leaderboard"></activity>
+        <activity android:name=".RedeemListActivity"></activity>
     </application>
 
 </manifest>
