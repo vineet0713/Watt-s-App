@@ -23,8 +23,47 @@ public class TestRedeemActivity extends AppCompatActivity{
 
     AlertDialog dealDialog;
 
-    final CharSequence[] targetItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final int[] targetCosts = {200,200,4000,100000,100000};
+    //electronics - row 1
+    final CharSequence[] frysItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] bestbuyItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] ebayItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] walmartItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] amazonItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] targetItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final int[] frysCosts = {100000,200000,300000,400000,500000};
+    final int[] bestbuyCosts = {100000,200000,300000,400000,500000};
+    final int[] ebayCosts = {100000,200000,300000,400000,500000};
+    final int[] walmartCosts = {100000,200000,300000,400000,500000};
+    final int[] amazonCosts = {100000,200000,300000,400000,500000};
+    final int[] targetCosts = {100000,200000,300000,400000,500000};
+
+    //food - row 2
+    final CharSequence[] wholefoodsItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] safewayItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] tacobellItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] chickfilaItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] pizzahutItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] burgerkingItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final int[] wholefoodsCosts = {200,200,4000,100000,100000};
+    final int[] safewayCosts = {200,200,4000,100000,100000};
+    final int[] tacobellCosts = {200,200,4000,100000,100000};
+    final int[] chickfilaCosts = {200,200,4000,100000,100000};
+    final int[] pizzahutCosts = {200,200,4000,100000,100000};
+    final int[] burgerkingCosts = {200,200,4000,100000,100000};
+
+    //electronics - row 3
+    final CharSequence[] macysItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] levisItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] costcoItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] oldnavyItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] nikeItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final CharSequence[] kohlsItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
+    final int[] macysCosts = {200,200,4000,100000,100000};
+    final int[] levisCosts = {200,200,4000,100000,100000};
+    final int[] costcoCosts = {200,200,4000,100000,100000};
+    final int[] oldnavyCosts = {200,200,4000,100000,100000};
+    final int[] nikeCosts = {200,200,4000,100000,100000};
+    final int[] kohlsCosts = {200,200,4000,100000,100000};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +74,104 @@ public class TestRedeemActivity extends AppCompatActivity{
                 .setContentView(R.layout.activity_redeem)
                 .setSwipeBackView(R.layout.swipeback_default);
     }
-    public void showPopUp(View view){
-        String title = "Target";
-        String message = "Would you like to redeem your points to get discounts at target?";
-        showDialog(title,message,targetItems, targetCosts);
+
+    public void showPopUpFrys(View view){
+        String title = "Frys";
+        showDialog(title,frysItems, frysCosts);
     }
-    public void showDialog(String title, String Message, final CharSequence[] itemList, final int[] costsLists ){
+
+    public void showPopUpBestbuy(View view){
+        String title = "Best Buy";
+        showDialog(title,bestbuyItems, bestbuyCosts);
+    }
+
+    public void showPopUpEbay(View view){
+        String title = "Ebay";
+        showDialog(title,ebayItems, ebayCosts);
+    }
+
+    public void showPopUpWalmart(View view){
+        String title = "Walmart";
+        showDialog(title,walmartItems, walmartCosts);
+    }
+
+    public void showPopUpAmazon(View view){
+        String title = "Amazon";
+
+        showDialog(title,amazonItems, amazonCosts);
+    }
+
+    public void showPopUpTarget(View view){
+        String title = "Target";
+        showDialog(title,targetItems, targetCosts);
+    }
+
+
+    public void showPopUpWholefoods(View view){
+        String title = "Whole Foods";
+        showDialog(title,wholefoodsItems, wholefoodsCosts);
+    }
+
+    public void showPopUpSafeway(View view){
+        String title = "Safeway";
+        showDialog(title,safewayItems, safewayCosts);
+    }
+
+    public void showPopUpTacobell(View view){
+        String title = "Taco Bell";
+        showDialog(title,tacobellItems, tacobellCosts);
+    }
+
+    public void showPopUpChickfila(View view){
+        String title = "Chick-fil-A";
+        showDialog(title,chickfilaItems, chickfilaCosts);
+    }
+
+    public void showPopUpPizzahut(View view){
+        String title = "Pizza Hut";
+        showDialog(title,pizzahutItems, pizzahutCosts);
+    }
+
+    public void showPopUpBurgerking(View view){
+        String title = "Burger King";
+        showDialog(title,burgerkingItems, burgerkingCosts);
+    }
+
+
+    public void showPopUpMacys(View view){
+        String title = "Macy's";
+        showDialog(title,macysItems, macysCosts);
+    }
+
+    public void showPopUpLevis(View view){
+        String title = "Levi's";
+        showDialog(title,levisItems, levisCosts);
+    }
+
+    public void showPopUpCostco(View view){
+        String title = "Costco";
+        showDialog(title,costcoItems, costcoCosts);
+    }
+
+    public void showPopUpOldNavy(View view){
+        String title = "Old Navy";
+        showDialog(title,oldnavyItems, oldnavyCosts);
+    }
+
+    public void showPopUpNike(View view){
+        String title = "Nike";
+        showDialog(title,nikeItems, nikeCosts);
+    }
+
+    public void showPopUpKohls(View view){
+        String title = "Kohl's";
+        showDialog(title,kohlsItems, kohlsCosts);
+    }
+
+
+    public void showDialog(String inputTitle, final CharSequence[] itemList, final int[] costsLists ){
         final CharSequence[] displayList = new CharSequence[costsLists.length];
+        final String title = inputTitle;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //builder.setCancelable(true);
         builder.setTitle(title);
@@ -56,19 +186,19 @@ public class TestRedeemActivity extends AppCompatActivity{
                 switch(targetItems)
                 {
                     case 0:
-                        confirmationDialog(itemList,costsLists,0);
+                        confirmationDialog(title,itemList,costsLists,0);
                         break;
                     case 1:
-                        confirmationDialog(itemList,costsLists,1);
+                        confirmationDialog(title,itemList,costsLists,1);
                         break;
                     case 2:
-                        confirmationDialog(itemList,costsLists,2);
+                        confirmationDialog(title,itemList,costsLists,2);
                         break;
                     case 3:
-                        confirmationDialog(itemList,costsLists,3);
+                        confirmationDialog(title,itemList,costsLists,3);
                         break;
                     case 4:
-                        confirmationDialog(itemList,costsLists,4);
+                        confirmationDialog(title,itemList,costsLists,4);
                         break;
 
                 }
@@ -79,9 +209,8 @@ public class TestRedeemActivity extends AppCompatActivity{
         dealDialog.show();
     }
 
-    private void confirmationDialog(CharSequence[] array,int[] costArray, int i){
+    private void confirmationDialog(String title,CharSequence[] array,int[] costArray, int i){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        int pointsCost = 200;
         builder.setCancelable(true);
         builder.setTitle("Confirmation");
         builder.setMessage("Are you sure you want to redeem " + costArray[i] + " points for a " +array[i]+ "?");
@@ -89,7 +218,13 @@ public class TestRedeemActivity extends AppCompatActivity{
         builder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
 
             @Override
-            public void onClick(DialogInterface dialog, int which) {}
+            public void onClick(DialogInterface dialog, int which) {
+                //check to see if there are enough points to buy
+                //subtract cost from points
+                //add item to redeemable items list
+                //toast complete
+                //update redeemableitemslist
+            }
         });
         builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
 
