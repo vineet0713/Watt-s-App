@@ -83,6 +83,49 @@
                     android:background="@drawable/target"
                     android:onClick="showPopUpTarget"
                     />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/ebay"
+                    android:onClick="showPopUpEbay"
+                    />
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/amazon"
+                    android:onClick="showPopUpAmazon"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/bestbuy"
+                    android:onClick="showPopUpBestbuy"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/frys"
+                    android:onClick="showPopUpFrys"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/walmart"
+                    android:onClick="showPopUpWalmart"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/target"
+                    android:onClick="showPopUpTarget"
+                    />
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -149,6 +192,49 @@
                     android:background="@drawable/pizzahut"
                     android:onClick="showPopUpPizzahut"
                     />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/wholefoods"
+                    android:onClick="showPopUpWholefoods"
+                    />
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/safeway"
+                    android:onClick="showPopUpSafeway"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/burgerking"
+                    android:onClick="showPopUpBurgerking"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/tacobell"
+                    android:onClick="showPopUpTacobell"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/chickfila"
+                    android:onClick="showPopUpChickfila"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/pizzahut"
+                    android:onClick="showPopUpPizzahut"
+                    />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -171,6 +257,49 @@
                 >
 
 
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/levis"
+                    android:onClick="showPopUpLevis"
+                    />
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/nike"
+                    android:onClick="showPopUpNike"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/oldnavy"
+                    android:onClick="showPopUpOldNavy"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/kohls"
+                    android:onClick="showPopUpKohls"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/macys"
+                    android:onClick="showPopUpMacys"
+                    />
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/costco"
+                    android:onClick="showPopUpCostco"
+                    />
                 <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="100dp"
