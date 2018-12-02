@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +39,10 @@ public class Leaderboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leaderboard);
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.activity_leaderboard)
+                .setSwipeBackView(R.layout.swipeback_default);
+        //setContentView(R.layout.activity_leaderboard);
 
         currentRankingView = findViewById(R.id.textView4);
 

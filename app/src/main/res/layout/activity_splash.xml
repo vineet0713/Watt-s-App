@@ -13,6 +13,7 @@
 
         <ImageView
             android:id="@+id/logo"
+            android:layout_gravity="center"
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:background="@mipmap/ic_watts_app_background" />
