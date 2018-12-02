@@ -90,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
 
         setTitle("Watt's App");
 
+
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
 
