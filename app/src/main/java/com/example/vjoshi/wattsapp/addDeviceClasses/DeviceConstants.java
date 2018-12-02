@@ -212,6 +212,6 @@ public interface DeviceConstants {
     String TCLURL = "https://pbs.twimg.com/profile_images/751669083901353984/MU6THdUV_400x400.jpg";
     String SONYURL = "https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/sony-512.png";
     String VIZIOURL = "http://propresenters.com/main/wp-content/uploads/2017/08/vizio.jpg";
-    String FITBITURL = "Fithttps://cdn-the5krunner-com.r.worldssl.net/wp-content/uploads/2017/11/1452480358_fitbit1.pngbit";
+    String FITBITURL = "https://cdn-the5krunner-com.r.worldssl.net/wp-content/uploads/2017/11/1452480358_fitbit1-300x300.png";
 
 }

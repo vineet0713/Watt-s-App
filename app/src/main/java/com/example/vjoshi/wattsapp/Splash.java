@@ -20,12 +20,12 @@ public class Splash extends AppCompatActivity {
 
         RotateAnimation animation = new RotateAnimation(180f, 360f,400,2000);
         animation.setDuration(2000);
-        final TextView subtv =(TextView) findViewById(R.id.subtext);
+        final TextView subtv = findViewById(R.id.subtext);
         subtv.setText("Loading.");
         subtv.setText("Loading..");
         subtv.setText("Loading...");
 
-        ImageView logo = (ImageView) findViewById(R.id.logo);
+        ImageView logo = findViewById(R.id.logo);
         logo.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener(){
             @Override

@@ -206,7 +206,7 @@ public class HomeActivity extends AppCompatActivity {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(20, 20, 20, 20);
             params.width = dpToPx(100);
-            params.height = dpToPx(60);
+            params.height = dpToPx(70);
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
 
