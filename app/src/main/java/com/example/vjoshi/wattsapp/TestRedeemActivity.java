@@ -236,12 +236,13 @@ public class TestRedeemActivity extends AppCompatActivity{
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User u = dataSnapshot.getValue(User.class);
+                        String item = array[i].toString();
                         int points = costArray[i];
                         String toastText;
 
                         if (u.canRedeemItem(points)) {
                             u.subtractTotalPoints(points);
-                            u.addRedeemableItem(new RedeemableItem(array[i].toString(), title, points));
+                            u.addRedeemableItem(new RedeemableItem(item, title, points));
 
                             final User modifiedUser = u;
                             database.child(username).setValue(modifiedUser);
@@ -249,7 +250,8 @@ public class TestRedeemActivity extends AppCompatActivity{
                             toastText = "Successful!";
                         } else {
                             // user doesn't have enough points to redeem the item!
-                            toastText = "You don't have enough points!";
+                            long pointsNeeded = points - u.getTotalPoints();
+                            toastText = "You need " + pointsNeeded + " more points to get " + item + "!";
                         }
 
                         Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_LONG).show();
