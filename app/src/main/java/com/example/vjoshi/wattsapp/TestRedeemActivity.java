@@ -1,24 +1,22 @@
 package com.example.vjoshi.wattsapp;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hannesdorfmann.swipeback.Position;
 import com.hannesdorfmann.swipeback.SwipeBack;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class TestRedeemActivity extends AppCompatActivity{
 
@@ -223,21 +221,42 @@ public class TestRedeemActivity extends AppCompatActivity{
         dealDialog.show();
     }
 
-    private void confirmationDialog(String title,CharSequence[] array,int[] costArray, int i){
+    private void confirmationDialog(final String title, final CharSequence[] array, final int[] costArray, final int i){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle("Confirmation");
         builder.setMessage("Are you sure you want to redeem " + costArray[i] + " points for a " +array[i]+ "?");
 
         builder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //check to see if there are enough points to buy
-                //subtract cost from points
-                //add item to redeemable items list
-                //toast complete
-                //update redeemableitemslist
+                final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                final String username = Backend.getInstance().getUsername();
+                database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        User u = dataSnapshot.getValue(User.class);
+                        int points = costArray[i];
+                        String toastText;
+
+                        if (u.canRedeemItem(points)) {
+                            u.subtractTotalPoints(points);
+                            u.addRedeemableItem(new RedeemableItem(array[i].toString(), title, points));
+
+                            final User modifiedUser = u;
+                            database.child(username).setValue(modifiedUser);
+
+                            toastText = "Successful!";
+                        } else {
+                            // user doesn't have enough points to redeem the item!
+                            toastText = "You don't have enough points!";
+                        }
+
+                        Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) { }
+                });
             }
         });
         builder.setNegativeButton("No",new DialogInterface.OnClickListener() {
