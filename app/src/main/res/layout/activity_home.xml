@@ -26,8 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp">
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
 
             <ImageButton
                 android:id="@+id/profileButton"
@@ -59,10 +59,10 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:background="@null"
                 android:scaleType="fitCenter"
                 android:src="@drawable/redeem_icon"
-                android:textColor="@color/blue"
-                android:background="@null"/>
+                android:textColor="@color/blue" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:background="@mipmap/ic_watts_app_background" />
+        android:background="@drawable/ic_new_launcher_background" />
 
 
 </RelativeLayout>
