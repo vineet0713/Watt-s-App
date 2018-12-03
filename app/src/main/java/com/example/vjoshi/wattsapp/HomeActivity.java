@@ -151,6 +151,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) { startActivity(leaderIntent);
             }
         });
+
+        loadDevices();
     }
 
     @Override
@@ -159,9 +161,6 @@ public class HomeActivity extends AppCompatActivity {
 
         firstChange = true;
         database.child("topRankHolder").addValueEventListener(topRankHolderChanged);
-
-        deviceButtons.clear();
-        loadDevices();
     }
 
     @Override
