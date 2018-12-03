@@ -18,7 +18,7 @@ import com.hannesdorfmann.swipeback.Position;
 import com.hannesdorfmann.swipeback.SwipeBack;
 
 
-public class TestRedeemActivity extends AppCompatActivity{
+public class RedeemActivity extends AppCompatActivity{
 
     AlertDialog dealDialog;
     private Button redeemListButton;
@@ -70,6 +70,8 @@ public class TestRedeemActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_redeem);
+        setTitle("Redeem Items");
+
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_redeem)
                 .setSwipeBackView(R.layout.swipeback_default);

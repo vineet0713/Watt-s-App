@@ -22,6 +22,8 @@ public class RedeemListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Redeem Items");
+
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_redeem_list)
                 .setSwipeBackView(R.layout.swipeback_default);

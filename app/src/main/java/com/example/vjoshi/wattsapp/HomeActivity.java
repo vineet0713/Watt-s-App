@@ -4,33 +4,23 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
+import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ExpandableListView;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants;
 import com.example.vjoshi.wattsapp.addDeviceClasses.activities.DeviceSelectionActivity;
-import com.example.vjoshi.wattsapp.profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,8 +30,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import static com.example.vjoshi.wattsapp.addDeviceClasses.DeviceConstants.*;
 
 // For Redeem class
 // https://www.youtube.com/watch?v=hl0AcuplFwE
@@ -102,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
 
         setTitle("Watt's App");
 
+
         // this is the root of the database
         database = FirebaseDatabase.getInstance().getReference();
 
@@ -121,7 +110,7 @@ public class HomeActivity extends AppCompatActivity {
         };
 
         final Intent profileIntent = new Intent(this, ProfileActivityTwo.class);
-        final Intent redeemIntent = new Intent(this, TestRedeemActivity.class);
+        final Intent redeemIntent = new Intent(this, RedeemActivity.class);
         final Intent deviceIntent = new Intent(this, DeviceSelectionActivity.class);
         final Intent leaderIntent = new Intent(this, Leaderboard.class);
 
@@ -206,7 +195,8 @@ public class HomeActivity extends AppCompatActivity {
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.setMargins(20, 20, 20, 20);
             params.width = dpToPx(100);
-            params.height = dpToPx(60);
+            params.height = dpToPx(70);
+            params.setGravity(Gravity.CENTER);
             newButton.setLayoutParams(params);
             newButton.setText(d.getModel());
 

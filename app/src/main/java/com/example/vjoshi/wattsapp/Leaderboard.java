@@ -39,6 +39,8 @@ public class Leaderboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Leaderboard");
+
         SwipeBack.attach(this, Position.LEFT)
                 .setContentView(R.layout.activity_leaderboard)
                 .setSwipeBackView(R.layout.swipeback_default);

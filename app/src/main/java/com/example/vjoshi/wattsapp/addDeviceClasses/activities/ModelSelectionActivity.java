@@ -9,6 +9,8 @@ import android.util.Log;
 import com.example.vjoshi.wattsapp.HomeActivity;
 import com.example.vjoshi.wattsapp.R;
 import com.example.vjoshi.wattsapp.addDeviceClasses.adapters.ModelRecyclerViewAdapter;
+import com.hannesdorfmann.swipeback.Position;
+import com.hannesdorfmann.swipeback.SwipeBack;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,10 @@ public class ModelSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_recycler_view);
+        //setContentView(R.layout.layout_recycler_view);
+        SwipeBack.attach(this, Position.LEFT)
+                .setContentView(R.layout.layout_recycler_view)
+                .setSwipeBackView(R.layout.swipeback_default);
 
         Log.d(TAG, "onCreate: started");
         setTitle("Select Model");
