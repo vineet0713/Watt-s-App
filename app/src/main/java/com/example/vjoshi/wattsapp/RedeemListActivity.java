@@ -29,7 +29,7 @@ public class RedeemListActivity extends AppCompatActivity {
         ListView list = findViewById(R.id.redeemList);
 
         redeemList = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, redeemList);
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.layout_redeem_list_item, redeemList);
 
         list.setAdapter(arrayAdapter);
     }

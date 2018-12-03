@@ -25,12 +25,12 @@ public class TestRedeemActivity extends AppCompatActivity{
 
 
     //electronics - row 1
-    final CharSequence[] frysItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
-    final CharSequence[] bestbuyItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
-    final CharSequence[] ebayItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
-    final CharSequence[] walmartItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
-    final CharSequence[] amazonItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
-    final CharSequence[] targetItems = {" 20 inch Sony TV "," 30 inch LG TV "," 40 inch Panasonic TV "," 50 inch Apple TV "," 60 inch Samsung TV "};
+    final CharSequence[] frysItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
+    final CharSequence[] bestbuyItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
+    final CharSequence[] ebayItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
+    final CharSequence[] walmartItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
+    final CharSequence[] amazonItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
+    final CharSequence[] targetItems = {"20 inch Sony TV ","30 inch LG TV ","40 inch Panasonic TV ","50 inch Apple TV ","60 inch Samsung TV "};
     final int[] frysCosts = {100000,200000,300000,400000,500000};
     final int[] bestbuyCosts = {100000,200000,300000,400000,500000};
     final int[] ebayCosts = {100000,200000,300000,400000,500000};
@@ -39,32 +39,32 @@ public class TestRedeemActivity extends AppCompatActivity{
     final int[] targetCosts = {100000,200000,300000,400000,500000};
 
     //food - row 2
-    final CharSequence[] wholefoodsItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] safewayItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] tacobellItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] chickfilaItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] pizzahutItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] burgerkingItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final int[] wholefoodsCosts = {200,200,4000,100000,100000};
-    final int[] safewayCosts = {200,200,4000,100000,100000};
-    final int[] tacobellCosts = {200,200,4000,100000,100000};
-    final int[] chickfilaCosts = {200,200,4000,100000,100000};
-    final int[] pizzahutCosts = {200,200,4000,100000,100000};
-    final int[] burgerkingCosts = {200,200,4000,100000,100000};
+    final CharSequence[] wholefoodsItems = {"12oz Chicken Breast ","12oz Steak ","20oz Soda ","Ice Cream 4 Pack ","KitKat Bar "};
+    final CharSequence[] safewayItems = {"12oz Chicken Breast ","12oz Steak ","20oz Soda ","Ice Cream 4 Pack ","KitKat Bar "};
+    final CharSequence[] tacobellItems = {"Soft Taco ","Crunchy Taco ","Bean Burrito ","Super Burrito ","Ultra Super Burrito "};
+    final CharSequence[] chickfilaItems = {"Chicken Sandwich ","Spicy Chicken Sandwich ","6 piece Chicken Nuggets  ","8 piece Chicken Nuggets ","Family Meal "};
+    final CharSequence[] pizzahutItems = {"20oz Soda ","1 piece Pizza ","Small Pizza ","Medium Pizza ","Large Pizza "};
+    final CharSequence[] burgerkingItems = {"Chicken Sandwich ","Spicy Chicken Sandwich ","6 piece Chicken Nuggets  ","8 piece Chicken Nuggets ","Family Meal "};
+    final int[] wholefoodsCosts = {600,600,200,8000,100};
+    final int[] safewayCosts = {600,600,200,8000,100};
+    final int[] tacobellCosts = {200,200,400,600,800};
+    final int[] chickfilaCosts = {200,200,400,600,800};
+    final int[] pizzahutCosts = {200,200,400,600,800};
+    final int[] burgerkingCosts = {200,200,400,600,800};
 
     //electronics - row 3
-    final CharSequence[] macysItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] levisItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] costcoItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] oldnavyItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] nikeItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final CharSequence[] kohlsItems = {" 20oz Soda "," Pop Rocks Candy "," Jansport Backpack  "," XBox One "," Play Station 4 "};
-    final int[] macysCosts = {200,200,4000,100000,100000};
-    final int[] levisCosts = {200,200,4000,100000,100000};
-    final int[] costcoCosts = {200,200,4000,100000,100000};
-    final int[] oldnavyCosts = {200,200,4000,100000,100000};
-    final int[] nikeCosts = {200,200,4000,100000,100000};
-    final int[] kohlsCosts = {200,200,4000,100000,100000};
+    final CharSequence[] macysItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final CharSequence[] levisItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final CharSequence[] costcoItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final CharSequence[] oldnavyItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final CharSequence[] nikeItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final CharSequence[] kohlsItems = {"Black T Shirt ","White T Shirt ","Sweater ","Light Jacket ","Heavy Jacket "};
+    final int[] macysCosts = {2000,2000,4000,4000,6000};
+    final int[] levisCosts = {2000,2000,4000,4000,6000};
+    final int[] costcoCosts = {2000,2000,4000,4000,6000};
+    final int[] oldnavyCosts = {2000,2000,4000,4000,6000};
+    final int[] nikeCosts = {2000,2000,4000,4000,6000};
+    final int[] kohlsCosts = {2000,2000,4000,4000,6000};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
