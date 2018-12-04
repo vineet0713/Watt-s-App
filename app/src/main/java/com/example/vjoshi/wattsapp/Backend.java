@@ -265,132 +265,132 @@ public class Backend {
 
 
         //Samsung Phones
-        deviceToUsageMap.put(SAMSUNG +  " " + SAMSUNGS6, new Double(13));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS7, new Double(14));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS7EDGE, new Double(15));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS8, new Double(16));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS8PLUS, new Double(17));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS9PLUS, new Double(18));
+        deviceToUsageMap.put(SAMSUNG +  " " + SAMSUNGS6, new Double(1));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS7, new Double(1.2));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS7EDGE, new Double(1.5));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS8, new Double(1.6));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS8PLUS, new Double(1.7));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGS9PLUS, new Double(1.8));
 
         //Google Phones
-        deviceToUsageMap.put(GOOGLE +  " " + PIXEL, new Double(19));
-        deviceToUsageMap.put(GOOGLE + " " + PIXELXL, new Double(20));
-        deviceToUsageMap.put(GOOGLE + " " + PIXEL2, new Double(21));
-        deviceToUsageMap.put(GOOGLE + " " + PIXEL2XL, new Double(22));
-        deviceToUsageMap.put(GOOGLE + " " + PIXEL3, new Double(23));
-        deviceToUsageMap.put(GOOGLE + " " + PIXEL3XL, new Double(24));
+        deviceToUsageMap.put(GOOGLE +  " " + PIXEL, new Double(1.9));
+        deviceToUsageMap.put(GOOGLE + " " + PIXELXL, new Double(1.0));
+        deviceToUsageMap.put(GOOGLE + " " + PIXEL2, new Double(1.1));
+        deviceToUsageMap.put(GOOGLE + " " + PIXEL2XL, new Double(1.2));
+        deviceToUsageMap.put(GOOGLE + " " + PIXEL3, new Double(1.3));
+        deviceToUsageMap.put(GOOGLE + " " + PIXEL3XL, new Double(2.4));
 
         //Windows Phones
-        deviceToUsageMap.put(MICROSOFT +  " " + LUMIA550, new Double(25));
-        deviceToUsageMap.put(MICROSOFT + " " + LUMIA650, new Double(26));
-        deviceToUsageMap.put(MICROSOFT + " " + LUMIA950, new Double(27));
+        deviceToUsageMap.put(MICROSOFT +  " " + LUMIA550, new Double(1.5));
+        deviceToUsageMap.put(MICROSOFT + " " + LUMIA650, new Double(1.6));
+        deviceToUsageMap.put(MICROSOFT + " " + LUMIA950, new Double(1.7));
 
         //Dell Laptops
         deviceToUsageMap.put(DELL +  " " + XPS, new Double(28));
-        deviceToUsageMap.put(DELL +  " " + INSPIRON, new Double(29));
-        deviceToUsageMap.put(DELL +  " " + LATITUDE, new Double(30));
+        deviceToUsageMap.put(DELL +  " " + INSPIRON, new Double(290));
+        deviceToUsageMap.put(DELL +  " " + LATITUDE, new Double(230));
 
         //Asus Laptops
-        deviceToUsageMap.put(ASUS +  " " + ZENBOOK, new Double(31));
-        deviceToUsageMap.put(ASUS +  " " + ROG, new Double(32));
-        deviceToUsageMap.put(ASUS +  " " + VIVOPRO, new Double(33));
-        deviceToUsageMap.put(ASUS +  " " + QSERIES, new Double(34));
+        deviceToUsageMap.put(ASUS +  " " + ZENBOOK, new Double(310));
+        deviceToUsageMap.put(ASUS +  " " + ROG, new Double(302));
+        deviceToUsageMap.put(ASUS +  " " + VIVOPRO, new Double(233));
+        deviceToUsageMap.put(ASUS +  " " + QSERIES, new Double(134));
 
         //HP Laptops
-        deviceToUsageMap.put(HP +  " " + ELITEBOOK, new Double(35));
-        deviceToUsageMap.put(HP +  " " + ENVY, new Double(36));
-        deviceToUsageMap.put(HP +  " " + SPECTRE, new Double(37));
-        deviceToUsageMap.put(HP +  " " + PAVILION, new Double(38));
+        deviceToUsageMap.put(HP +  " " + ELITEBOOK, new Double(325));
+        deviceToUsageMap.put(HP +  " " + ENVY, new Double(136));
+        deviceToUsageMap.put(HP +  " " + SPECTRE, new Double(237));
+        deviceToUsageMap.put(HP +  " " + PAVILION, new Double(338));
 
         //Dell Desktop
-        deviceToUsageMap.put(DELL + " " + XPS8930, new Double(39));
-        deviceToUsageMap.put(DELL + " " + INSPIRON5675, new Double(40));
-        deviceToUsageMap.put(DELL + " " + ALIENWARER7, new Double(41));
+        deviceToUsageMap.put(DELL + " " + XPS8930, new Double(309));
+        deviceToUsageMap.put(DELL + " " + INSPIRON5675, new Double(240));
+        deviceToUsageMap.put(DELL + " " + ALIENWARER7, new Double(341));
 
         //Asus Desktop
-        deviceToUsageMap.put(ASUS + " " + ASUSG11, new Double(42));
-        deviceToUsageMap.put(ASUS + " " + ASUSG20, new Double(43));
-        deviceToUsageMap.put(ASUS + " " + ASUSGT51, new Double(45));
-        deviceToUsageMap.put(ASUS + " " + ASUSVIVIO, new Double(46));
+        deviceToUsageMap.put(ASUS + " " + ASUSG11, new Double(142));
+        deviceToUsageMap.put(ASUS + " " + ASUSG20, new Double(230));
+        deviceToUsageMap.put(ASUS + " " + ASUSGT51, new Double(245));
+        deviceToUsageMap.put(ASUS + " " + ASUSVIVIO, new Double(146));
 
         //HP Desktop
-        deviceToUsageMap.put(HP + " " + DESKTOPPAVILION, new Double(47));
-        deviceToUsageMap.put(HP + " " + DESKTOPSLIMLIME, new Double(48));
+        deviceToUsageMap.put(HP + " " + DESKTOPPAVILION, new Double(147));
+        deviceToUsageMap.put(HP + " " + DESKTOPSLIMLIME, new Double(208));
         deviceToUsageMap.put(HP + " " + DESKTOPENVY, new Double(49));
         deviceToUsageMap.put(HP + " " + DESKTOPCOMPAQ, new Double(50));
-        deviceToUsageMap.put(HP + " " + DESKTOPELITEDESK, new Double(51));
+        deviceToUsageMap.put(HP + " " + DESKTOPELITEDESK, new Double(251));
 
         //Apple Tablets
-        deviceToUsageMap.put(APPLE + " " + IPAD10, new Double(52));
-        deviceToUsageMap.put(APPLE + " " + IPAD12, new Double(53));
-        deviceToUsageMap.put(APPLE + " " + IPADMINI, new Double(54));
+        deviceToUsageMap.put(APPLE + " " + IPAD10, new Double(12));
+        deviceToUsageMap.put(APPLE + " " + IPAD12, new Double(13));
+        deviceToUsageMap.put(APPLE + " " + IPADMINI, new Double(10));
 
         //Microsoft Tablets
-        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTPRO3, new Double(55));
-        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTPRO4, new Double(56));
-        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTGO, new Double(57));
+        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTPRO3, new Double(10));
+        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTPRO4, new Double(6));
+        deviceToUsageMap.put(MICROSOFT + " " + MICROSOFTGO, new Double(17));
 
         //Samsung Tablets
-        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTAB10, new Double(58));
-        deviceToUsageMap.put(SAMSUNG + " " + GALAXYBOOK2, new Double(59));
-        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTABA10, new Double(60));
-        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTABA8, new Double(61));
+        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTAB10, new Double(8));
+        deviceToUsageMap.put(SAMSUNG + " " + GALAXYBOOK2, new Double(5));
+        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTABA10, new Double(15));
+        deviceToUsageMap.put(SAMSUNG + " " + GALAXYTABA8, new Double(12));
 
         //Amazon Tablets
-        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE10, new Double(62));
-        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE7, new Double(63));
-        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE, new Double(64));
-        deviceToUsageMap.put(AMAZON + " " + AMAZONKINDLE, new Double(65));
+        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE10, new Double(12));
+        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE7, new Double(13));
+        deviceToUsageMap.put(AMAZON + " " + AMAZONFIRE, new Double(4));
+        deviceToUsageMap.put(AMAZON + " " + AMAZONKINDLE, new Double(6));
 
         //Lenovo Tablets
-        deviceToUsageMap.put(LENOVO + " " + LENOVOTAB8, new Double(66));
-        deviceToUsageMap.put(LENOVO + " " + LENOVOTAB10, new Double(67));
-        deviceToUsageMap.put(LENOVO + " " + LENOVOYOGA, new Double(68));
+        deviceToUsageMap.put(LENOVO + " " + LENOVOTAB8, new Double(6));
+        deviceToUsageMap.put(LENOVO + " " + LENOVOTAB10, new Double(7));
+        deviceToUsageMap.put(LENOVO + " " + LENOVOYOGA, new Double(8));
 
         //Samsung TVs
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ7F55, new Double(69));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ7F75, new Double(70));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ6F55, new Double(71));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ6F75, new Double(72));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ7F55, new Double(369));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ7F75, new Double(170));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ6F55, new Double(271));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGQ6F75, new Double(272));
 
         //LG TVs
-        deviceToUsageMap.put(LG + " " + LGC7P, new Double(73));
-        deviceToUsageMap.put(LG + " " + LGE7P, new Double(74));
-        deviceToUsageMap.put(LG + " " + LGC8, new Double(75));
+        deviceToUsageMap.put(LG + " " + LGC7P, new Double(173));
+        deviceToUsageMap.put(LG + " " + LGE7P, new Double(274));
+        deviceToUsageMap.put(LG + " " + LGC8, new Double(375));
 
         //Toshiba TVs
-        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL9300, new Double(76));
-        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL7350, new Double(77));
-        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL7300, new Double(78));
+        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL9300, new Double(276));
+        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL7350, new Double(177));
+        deviceToUsageMap.put(TOSHIBA + " " + TOSHIBAL7300, new Double(378));
 
         //TCL TVs
-        deviceToUsageMap.put(TCL + " " + TCL6SERIES, new Double(79));
-        deviceToUsageMap.put(TCL + " " + TCLR615, new Double(80));
-        deviceToUsageMap.put(TCL + " " + TCLS405, new Double(81));
+        deviceToUsageMap.put(TCL + " " + TCL6SERIES, new Double(279));
+        deviceToUsageMap.put(TCL + " " + TCLR615, new Double(380));
+        deviceToUsageMap.put(TCL + " " + TCLS405, new Double(181));
 
         //Sony TVs
-        deviceToUsageMap.put(SONY + " " + SONYX900F, new Double(82));
-        deviceToUsageMap.put(SONY + " " + SONYKDA1, new Double(83));
-        deviceToUsageMap.put(SONY + " " + SONYX900E, new Double(84));
+        deviceToUsageMap.put(SONY + " " + SONYX900F, new Double(282));
+        deviceToUsageMap.put(SONY + " " + SONYKDA1, new Double(283));
+        deviceToUsageMap.put(SONY + " " + SONYX900E, new Double(384));
 
         //Vizio TVs
-        deviceToUsageMap.put(VIZIO + " " + VIZIODE0, new Double(85));
-        deviceToUsageMap.put(VIZIO + " " + VIZIOMC1, new Double(86));
+        deviceToUsageMap.put(VIZIO + " " + VIZIODE0, new Double(185));
+        deviceToUsageMap.put(VIZIO + " " + VIZIOMC1, new Double(286));
 
         //Fitbits
-        deviceToUsageMap.put(FITBIT + " " + FITBITCHARGE2, new Double(87));
-        deviceToUsageMap.put(FITBIT + " " + FITBITCHARGE3, new Double(88));
-        deviceToUsageMap.put(FITBIT + " " + FITBITVERSA, new Double(89));
+        deviceToUsageMap.put(FITBIT + " " + FITBITCHARGE2, new Double(0.4));
+        deviceToUsageMap.put(FITBIT + " " + FITBITCHARGE3, new Double(0.8));
+        deviceToUsageMap.put(FITBIT + " " + FITBITVERSA, new Double(0.2));
 
         //Samsung Smartwatch
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS2, new Double(90));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS3, new Double(91));
-        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS, new Double(92));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS2, new Double(0.1));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS3, new Double(0.15));
+        deviceToUsageMap.put(SAMSUNG + " " + SAMSUNGGEARS, new Double(0.24));
 
         //Apple Smart Watch
-        deviceToUsageMap.put(APPLE + " " + APPLEWATCH, new Double(93));
-        deviceToUsageMap.put(APPLE + " " + APPLEWATCH2, new Double(94));
-        deviceToUsageMap.put(APPLE + " " + APPLEWATCH3, new Double(95));
+        deviceToUsageMap.put(APPLE + " " + APPLEWATCH, new Double(0.3));
+        deviceToUsageMap.put(APPLE + " " + APPLEWATCH2, new Double(0.4));
+        deviceToUsageMap.put(APPLE + " " + APPLEWATCH3, new Double(0.25));
     }
 
     /*
